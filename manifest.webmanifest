@@ -1,12 +1,12 @@
 {
-  "name": "قوافل الأخيار",
-  "short_name": "قوافل",
+  "name": "منصة واعي",
+  "short_name": "واعي",
   "lang": "ar",
   "dir": "rtl",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#0f172a",
-  "theme_color": "#0f172a",
+  "background_color": "#0b1220",
+  "theme_color": "#0b1220",
   "icons": [
     {
       "src": "/assets/icons/favicon-192.png",
