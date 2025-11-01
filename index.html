@@ -89,7 +89,6 @@ h2{color:var(--gold);font-weight:800;font-size:clamp(22px,2.3vw,32px);margin-bot
   background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:14px;padding:.6rem;transition:.3s
 }
 .partner:hover{transform:translateY(-2px);border-color:rgba(254,178,17,.4)}
-/* Ensuring partner logos fill their boxes */
 .partner img{
   width:100%;
   height:100%;
@@ -104,23 +103,30 @@ h2{color:var(--gold);font-weight:800;font-size:clamp(22px,2.3vw,32px);margin-bot
 .num{display:block;font-size:clamp(26px,3vw,40px);font-weight:800;color:var(--gold)}
 .stat p{margin-top:.25rem}
 
-/* Testimonials slider */
-.t-wrap{position:relative}
-.t-slider{position:relative;overflow:hidden;border-radius:16px}
-.t-track{display:flex;transition:transform .7s ease}
+/* Testimonials grid */
+.t-grid{
+  display:grid;
+  gap:1rem;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+}
 .t-card{
-  min-width:100%; padding:1.2rem;background:rgba(255,255,255,.04);
-  border:1px solid var(--border); backdrop-filter:blur(6px)
+  background:rgba(255,255,255,.04);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:1rem;
+  opacity:0;
+  transform:translateY(16px);
+  transition:opacity .7s ease, transform .7s ease;
+  backdrop-filter:blur(6px);
+}
+.t-card.in{
+  opacity:1;
+  transform:translateY(0);
 }
 .t-head{display:flex;align-items:center;gap:.8rem;margin-bottom:.5rem}
 .avatar{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:rgba(254,178,17,.12);color:var(--gold);font-weight:800;border:1px solid var(--border)}
 .stars{color:var(--gold);letter-spacing:.5px;font-size:14px;animation:glow 2.8s ease-in-out infinite}
 @keyframes glow{0%,100%{opacity:1}50%{opacity:.75}}
-.t-nav{display:flex;gap:.6rem;justify-content:center;margin-top:.8rem}
-.t-nav button{
-  width:10px;height:10px;border-radius:50%;border:1px solid var(--gold);background:transparent;cursor:pointer;opacity:.6
-}
-.t-nav button.active{background:var(--gold);opacity:1}
 
 /* Contact */
 .contact{display:grid;gap:1rem;grid-template-columns:1fr 1fr}
@@ -232,36 +238,19 @@ footer a{color:var(--gold);text-decoration:underline dashed}
   </div>
 </section>
 
-<!-- TESTIMONIALS SLIDER -->
+<!-- TESTIMONIALS GRID -->
 <section id="testimonials" class="sec">
   <h2>قالوا عنا</h2>
-  <div class="t-wrap">
-    <div class="t-slider">
-      <div class="t-track" id="tTrack">
-        <article class="t-card">
-          <div class="t-head"><div class="avatar">أ</div><div><strong>أبو محمد</strong><div class="stars">★★★★★</div></div></div>
-          <p>تنظيم راقٍ، مواعيد دقيقة، وتجربة سفر فاخرة من البداية حتى النهاية.</p>
-        </article>
-        <article class="t-card">
-          <div class="t-head"><div class="avatar">س</div><div><strong>سارة.م</strong><div class="stars">★★★★★</div></div></div>
-          <p>خدمة عملاء احترافية وخيارات فنادق ممتازة. أوصي بهم دون تردد.</p>
-        </article>
-        <article class="t-card">
-          <div class="t-head"><div class="avatar">ر</div><div><strong>شركة رواحل</strong><div class="stars">★★★★★</div></div></div>
-          <p>نقل VIP فعلاً وتجربة ضيافة فاخرة. شكراً لكم على رحلتنا المميزة.</p>
-        </article>
-      </div>
-    </div>
-    <div class="t-nav" id="tNav">
-      <button aria-label="slide 1" class="active"></button>
-      <button aria-label="slide 2"></button>
-      <button aria-label="slide 3"></button>
-    </div>
+  <div class="t-grid">
+    <article class="t-card"><div class="t-head"><div class="avatar">أ</div><div><strong>أبو محمد</strong><div class="stars">★★★★★</div></div></div><p>تنظيم راقٍ، مواعيد دقيقة، وتجربة سفر فاخرة من البداية حتى النهاية.</p></article>
+    <article class="t-card"><div class="t-head"><div class="avatar">س</div><div><strong>سارة.م</strong><div class="stars">★★★★★</div></div></div><p>خدمة عملاء احترافية وخيارات فنادق ممتازة. أوصي بهم دون تردد.</p></article>
+    <article class="t-card"><div class="t-head"><div class="avatar">ر</div><div><strong>شركة رواحل</strong><div class="stars">★★★★★</div></div></div><p>نقل VIP فعلاً وتجربة ضيافة فاخرة. شكراً لكم على رحلتنا المميزة.</p></article>
+    <article class="t-card"><div class="t-head"><div class="avatar">م</div><div><strong>مها السيف</strong><div class="stars">★★★★★</div></div></div><p>الإقامة في الفنادق الفاخرة والتنقل المريح كانت أكثر مما توقعت. أشعر بالرضا التام.</p></article>
   </div>
 </section>
 
 <!-- CONTACT -->
-<section id="contact" class="sec">
+<section id="contact" class "sec">
   <h2>تواصل معنا</h2>
   <form id="form" class="contact" autocomplete="on">
     <label>الاسم الكامل<input type="text" name="name" required placeholder="اسمك الثلاثي" /></label>
@@ -308,6 +297,11 @@ const cards=[...document.querySelectorAll('.card')];
 const co=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in'); co.unobserve(e.target);}})},{threshold:.15});
 cards.forEach(c=>co.observe(c));
 
+// Testimonials reveal
+const tCards=[...document.querySelectorAll('.t-card')];
+const tObs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in'); tObs.unobserve(e.target);}})},{threshold:.15});
+tCards.forEach(c=>tObs.observe(c));
+
 // Counters
 const stats=document.querySelector('#impact');
 const nums=[...document.querySelectorAll('.num')];
@@ -325,13 +319,6 @@ new IntersectionObserver(es=>{
     }
   });
 },{threshold:.35}).observe(stats);
-
-// Testimonials slider (auto + dots)
-const track=document.getElementById('tTrack');
-const dots=[...document.querySelectorAll('#tNav button')];
-let ti=0; function go(n){ti=n; track.style.transform=`translateX(-${n*100}%)`; dots.forEach((d,i)=>d.classList.toggle('active',i===n));}
-dots.forEach((d,i)=>d.addEventListener('click',()=>go(i)));
-setInterval(()=>go((ti+1)%dots.length),5000);
 
 // WhatsApp form
 document.getElementById('form').addEventListener('submit',e=>{
