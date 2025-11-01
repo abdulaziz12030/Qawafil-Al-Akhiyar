@@ -60,7 +60,7 @@ header{position:sticky;top:0;z-index:50;background:rgba(0,0,0,.55);backdrop-filt
 section.sec{max-width:1100px;margin:auto;padding:3.2rem 1rem}
 h2{color:var(--gold);font-weight:800;font-size:clamp(22px,2.3vw,32px);margin-bottom:1.2rem}
 
-/* About (soft reveal) */
+/* About */
 #about p{color:var(--muted);opacity:0;transform:translateY(18px);transition:.8s ease}
 #about.in p{opacity:1;transform:none}
 
@@ -89,6 +89,13 @@ h2{color:var(--gold);font-weight:800;font-size:clamp(22px,2.3vw,32px);margin-bot
   background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:14px;padding:.6rem;transition:.3s
 }
 .partner:hover{transform:translateY(-2px);border-color:rgba(254,178,17,.4)}
+/* Ensuring partner logos fill their boxes */
+.partner img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  filter:brightness(1.3);
+}
 @keyframes scrollLTR{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
 
 /* Impact (counters) */
