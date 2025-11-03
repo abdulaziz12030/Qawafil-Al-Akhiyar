@@ -281,7 +281,7 @@ footer a{color:var(--gold);text-decoration:underline dashed}
 const slides=[...document.querySelectorAll('.hero img')];
 let hs=0; setInterval(()=>{slides[hs].classList.remove('active'); hs=(hs+1)%slides.length; slides[hs].classList.add('active');},5000);
 
-// Typewriter orange line (قوافل الأخيار)
+// Typewriter Fade Effect - قوافل الأخيار
 const words = [
   "رحلات فاخرة من الرياض إلى مكة والمدينة",
   "نقل مريح وآمن بأسطول حديث",
@@ -290,6 +290,26 @@ const words = [
   "نحن نسافر بك براحة... وتعود بطمأنينة",
   "احجز الآن مع قوافل الأخيار"
 ];
+
+const tw = document.getElementById('typewriter');
+let wi = 0;
+
+// إعداد النمط الأساسي للنصوص
+tw.style.transition = "opacity 1.5s ease";
+tw.style.opacity = 0;
+tw.style.display = "inline-block";
+
+function showNext() {
+  tw.style.opacity = 0; // اخفاء النص تدريجيًا
+  setTimeout(() => {
+    tw.textContent = words[wi]; // استبدال النص
+    tw.style.opacity = 1;       // إظهار النص تدريجيًا
+    wi = (wi + 1) % words.length;
+  }, 700); // وقت الإخفاء قبل الظهور
+}
+
+showNext(); // أول تشغيل
+setInterval(showNext, 4500); // كل 4.5 ثوانٍ يتغير النص
 
 let wi = 0, ci = 0;
 const tw = document.getElementById('typewriter');
