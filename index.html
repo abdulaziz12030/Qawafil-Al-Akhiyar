@@ -281,12 +281,40 @@ footer a{color:var(--gold);text-decoration:underline dashed}
 const slides=[...document.querySelectorAll('.hero img')];
 let hs=0; setInterval(()=>{slides[hs].classList.remove('active'); hs=(hs+1)%slides.length; slides[hs].classList.add('active');},5000);
 
-// Typewriter orange line
-const words=["حافلات حديثة","مقاعد مريحة","تكييف عالي الجودة","خدمات متنوعة","إقامة فعاليات وأنشطة","احجز الآن"];
-let wi=0, ci=0; const tw=document.getElementById('typewriter');
-function type(){ if(ci<words[wi].length){ tw.innerHTML=words[wi].slice(0,++ci)+'<span class="cursor"></span>'; setTimeout(type,90);} else { setTimeout(erase,1200);} }
-function erase(){ if(ci>0){ tw.innerHTML=words[wi].slice(0,--ci)+'<span class="cursor"></span>'; setTimeout(erase,45);} else { wi=(wi+1)%words.length; setTimeout(type,250);} }
+// Typewriter orange line (قوافل الأخيار)
+const words = [
+  "رحلات فاخرة من الرياض إلى مكة والمدينة",
+  "نقل مريح وآمن بأسطول حديث",
+  "تنظيم دقيق يليق بثقتكم",
+  "إقامة فندقية راقية وخدمات مميزة",
+  "نحن نسافر بك براحة... وتعود بطمأنينة",
+  "احجز الآن مع قوافل الأخيار"
+];
+
+let wi = 0, ci = 0;
+const tw = document.getElementById('typewriter');
+
+function type() {
+  if (ci < words[wi].length) {
+    tw.innerHTML = words[wi].slice(0, ++ci) + '<span class="cursor"></span>';
+    setTimeout(type, 80);
+  } else {
+    setTimeout(erase, 1500);
+  }
+}
+
+function erase() {
+  if (ci > 0) {
+    tw.innerHTML = words[wi].slice(0, --ci) + '<span class="cursor"></span>';
+    setTimeout(erase, 40);
+  } else {
+    wi = (wi + 1) % words.length;
+    setTimeout(type, 300);
+  }
+}
+
 type();
+
 
 // About reveal
 const about=document.getElementById('about');
