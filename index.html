@@ -13,7 +13,7 @@
 :root{
   --bg:#0b1220; --bg2:#070b14; --fg:#e2e8f0; --muted:#9fb0c7;
   --gold:#FEB211; --border:rgba(255,255,255,.12);
-  --glass:rgba(11,18,32,.55);
+  --card:#ffffff07; --glass:rgba(11,18,32,.55);
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{overflow-x:hidden;scroll-behavior:smooth}
@@ -48,6 +48,10 @@ header{position:sticky;top:0;z-index:50;background:rgba(0,0,0,.55);backdrop-filt
   padding:1.6rem;
   text-align:center;
   animation:fade-up .9s ease both;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:.6rem;
 }
 .hero-card h1{font-size:clamp(26px,3.4vw,42px);font-weight:800;margin-bottom:.5rem}
 
@@ -58,13 +62,14 @@ header{position:sticky;top:0;z-index:50;background:rgba(0,0,0,.55);backdrop-filt
   transition:opacity 1.5s ease;
   opacity:0;
   display:block;
-  min-height:34px;
-  margin-bottom:1rem;
+  margin: .25rem 0 .8rem;
 }
 
 .btn-primary{
-  display:inline-block;
-  margin-top:0.5rem;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  margin:0 auto;
   padding:.8rem 1.4rem;
   border:none;
   border-radius:999px;
@@ -74,9 +79,9 @@ header{position:sticky;top:0;z-index:50;background:rgba(0,0,0,.55);backdrop-filt
   cursor:pointer;
   opacity:0;
   transform:translateY(15px);
-  transition:all 1s ease;
+  transition:opacity .8s ease,transform .8s ease;
 }
-.btn-primary.in{
+.btn-primary.show{
   opacity:1;
   transform:translateY(0);
 }
@@ -161,19 +166,14 @@ function showNext(){
 showNext();
 setInterval(showNext,4000);
 
-// ===== Reveal & Button Motion =====
-const btn=document.querySelector('.btn-primary');
-window.addEventListener('load',()=>{setTimeout(()=>btn.classList.add('in'),1200);});
-window.addEventListener('scroll',()=>{
-  document.querySelectorAll('.reveal').forEach(el=>{
-    const r=el.getBoundingClientRect().top;
-    if(r<window.innerHeight-80)el.classList.add('in');
-  });
+// ===== زر يظهر بحركة عند تحميل الصفحة =====
+window.addEventListener('load',()=>{
+  setTimeout(()=>document.querySelector('.btn-primary').classList.add('show'),1200);
 });
 
-// ===== Scroll to Contact =====
+// ===== Scroll to Contact (placeholder) =====
 function scrollToContact(){
-  alert('سيتم توجيهك إلى قسم التواصل في النسخة الكاملة قريباً 🚍');
+  alert('سيتم توجيهك إلى قسم التواصل في النسخة الكاملة 🚍');
 }
 </script>
 </body>
