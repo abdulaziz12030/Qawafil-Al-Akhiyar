@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>قوافل الأخيار للرحلات السياحية</title>
-<meta name="description" content="قوافل الأخيار للرحلات السياحية - رحلات فاخرة من الرياض إلى مكة والمدينة، نقل VIP وإقامة مميزة." />
+<meta name="description" content="قوافل الأخيار للرحلات السياحية - رحلات فاخرة من الرياض إلى مكة والمدينة، نقل VIP وإقامة مميزة بخدمات راقية." />
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;800&display=swap" rel="stylesheet" />
 <style>
 :root{
@@ -12,8 +12,8 @@
   --gold:#FEB211; --border:rgba(255,255,255,.12);
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html,body{overflow-x:hidden}
-body{font-family:'Cairo',system-ui,sans-serif;background:var(--bg);color:var(--fg);line-height:1.8}
+html,body{overflow-x:hidden;scroll-behavior:smooth}
+body{font-family:'Cairo',sans-serif;background:var(--bg);color:var(--fg);line-height:1.8}
 
 /* Header */
 header{position:sticky;top:0;z-index:50;background:rgba(0,0,0,.55);backdrop-filter:blur(8px)}
@@ -27,7 +27,7 @@ header{position:sticky;top:0;z-index:50;background:rgba(0,0,0,.55);backdrop-filt
 .menu a:hover{background:rgba(255,255,255,.06)}
 @media (max-width:900px){.menu{display:none}}
 
-/* HERO images only */
+/* HERO */
 .hero{position:relative;min-height:65vh}
 .hero::before{
   content:"";position:absolute;inset:0;z-index:-1;
@@ -39,8 +39,8 @@ header{position:sticky;top:0;z-index:50;background:rgba(0,0,0,.55);backdrop-filt
 }
 .hero img.active{opacity:1}
 
-/* HERO text box (separate) */
-.hero-box{max-width:1100px;margin:-60px auto 0; padding:0 1rem}
+/* HERO text */
+.hero-box{max-width:1100px;margin:-60px auto 0;padding:0 1rem}
 .hero-card{
   background:rgba(11,18,32,.55); border:1px solid rgba(255,255,255,.08);
   border-radius:16px; box-shadow:0 6px 18px rgba(0,0,0,.4); backdrop-filter:blur(8px);
@@ -48,81 +48,67 @@ header{position:sticky;top:0;z-index:50;background:rgba(0,0,0,.55);backdrop-filt
 }
 @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
 .hero-card h1{font-size:clamp(26px,3.4vw,42px);font-weight:800;margin-bottom:.5rem}
-.hero-card .orange{font-size:clamp(18px,2.2vw,24px);color:var(--gold);font-weight:800;min-height:34px}
-.cursor{display:inline-block;width:6px;background:var(--gold);animation:blink 1s infinite}
-@keyframes blink{50%{opacity:0}}
+.hero-card .orange{
+  font-size:clamp(18px,2.2vw,24px);
+  color:var(--gold);
+  font-weight:800;
+  transition:opacity 1.5s ease;
+  opacity:0;
+  display:inline-block;
+  min-height:34px;
+}
 .btn-primary{
   margin-top:1rem;padding:.8rem 1.4rem;border:none;border-radius:999px;
-  background:linear-gradient(90deg,#f59e0b,var(--gold));color:#101623;font-weight:800;cursor:pointer
+  background:linear-gradient(90deg,#f59e0b,var(--gold));
+  color:#101623;font-weight:800;cursor:pointer;
 }
 
 /* Sections */
-section.sec{max-width:1100px;margin:auto;padding:3.2rem 1rem}
+section.sec{max-width:1100px;margin:auto;padding:3rem 1rem}
 h2{color:var(--gold);font-weight:800;font-size:clamp(22px,2.3vw,32px);margin-bottom:1.2rem}
 
 /* About */
 #about p{color:var(--muted);opacity:0;transform:translateY(18px);transition:.8s ease}
 #about.in p{opacity:1;transform:none}
 
-/* Services (4 cards with zoom-in) */
+/* Services */
 .cards{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
 .card{
   background:rgba(255,255,255,.035);border:1px solid var(--border);border-radius:14px;overflow:hidden;
-  transform:scale(.98);opacity:0;transition:.6s ease; will-change:transform,opacity
+  transform:scale(.98);opacity:0;transition:.6s ease;
 }
 .card.in{opacity:1;transform:scale(1)}
 .card img{width:100%;height:200px;object-fit:cover}
 .card .inner{padding:1rem}
 .card h3{margin-bottom:.3rem}
 
-/* Partners (marquee) */
+/* Partners */
 .partners{background:rgba(255,255,255,.03);border-top:1px solid rgba(255,255,255,.06);border-bottom:1px solid rgba(255,255,255,.06)}
 .partners .wrap{max-width:1100px;margin:auto;padding:2rem 1rem}
 .marquee{overflow:hidden;position:relative}
-.track{
-  display:flex;gap:2rem;will-change:transform;
-  animation:scrollLTR 25s linear infinite;
-}
+.track{display:flex;gap:2rem;will-change:transform;animation:scrollLTR 25s linear infinite;}
 .marquee:hover .track{animation-play-state:paused}
 .partner{
   flex:0 0 auto;width:160px;height:64px;display:flex;align-items:center;justify-content:center;
   background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:14px;padding:.6rem;transition:.3s
 }
-.partner:hover{transform:translateY(-2px);border-color:rgba(254,178,17,.4)}
-.partner img{
-  width:100%;
-  height:100%;
-  object-fit:contain;
-  filter:brightness(1.3);
-}
+.partner img{width:100%;height:100%;object-fit:contain;filter:brightness(1.3);}
 @keyframes scrollLTR{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
 
-/* Impact (counters) */
+/* Impact */
 .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem}
 .stat{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:14px;padding:1.1rem;text-align:center}
 .num{display:block;font-size:clamp(26px,3vw,40px);font-weight:800;color:var(--gold)}
 .stat p{margin-top:.25rem}
 
 /* Testimonials grid */
-.t-grid{
-  display:grid;
-  gap:1rem;
-  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-}
+.t-grid{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
 .t-card{
-  background:rgba(255,255,255,.04);
-  border:1px solid var(--border);
-  border-radius:14px;
-  padding:1rem;
-  opacity:0;
-  transform:translateY(16px);
+  background:rgba(255,255,255,.04);border:1px solid var(--border);
+  border-radius:14px;padding:1rem;opacity:0;transform:translateY(16px);
   transition:opacity .7s ease, transform .7s ease;
-  backdrop-filter:blur(6px);
 }
-.t-card.in{
-  opacity:1;
-  transform:translateY(0);
-}
+.t-card.in{opacity:1;transform:translateY(0)}
 .t-head{display:flex;align-items:center;gap:.8rem;margin-bottom:.5rem}
 .avatar{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:rgba(254,178,17,.12);color:var(--gold);font-weight:800;border:1px solid var(--border)}
 .stars{color:var(--gold);letter-spacing:.5px;font-size:14px;animation:glow 2.8s ease-in-out infinite}
@@ -142,10 +128,11 @@ textarea{min-height:140px;resize:vertical}
 footer{padding:2rem 1rem;text-align:center;border-top:1px solid rgba(255,255,255,.08);color:#cbd5e1}
 footer a{color:var(--gold);text-decoration:underline dashed}
 
-/* WhatsApp Float */
+/* WhatsApp Button */
 .whatsapp{
   position:fixed;left:18px;bottom:18px;width:56px;height:56px;border-radius:50%;
-  background:linear-gradient(135deg,#25D366,#1ebe57);display:grid;place-items:center;color:#fff;font-weight:800;z-index:60
+  background:linear-gradient(135deg,#25D366,#1ebe57);
+  display:grid;place-items:center;color:#fff;font-weight:800;z-index:60
 }
 </style>
 </head>
@@ -171,7 +158,7 @@ footer a{color:var(--gold);text-decoration:underline dashed}
   </div>
 </header>
 
-<!-- HERO (5 images only for performance) -->
+<!-- HERO (5 صور) -->
 <section class="hero" aria-label="Hero">
   <img src="images/hero1.jpg" class="active" alt="">
   <img src="images/hero2.jpg" alt="">
@@ -180,11 +167,11 @@ footer a{color:var(--gold);text-decoration:underline dashed}
   <img src="images/hero5.jpg" alt="">
 </section>
 
-<!-- HERO TEXT BOX -->
+<!-- HERO TEXT -->
 <div class="hero-box">
   <div class="hero-card">
     <h1>نأخذك إلى وجهتك بطمأنينة</h1>
-    <div class="orange" id="typewriter"></div>
+    <div class="orange" id="typewriter">رحلات فاخرة من الرياض إلى مكة والمدينة</div>
     <button class="btn-primary" onclick="document.querySelector('#contact').scrollIntoView({behavior:'smooth'})">احجز الآن</button>
   </div>
 </div>
@@ -192,7 +179,7 @@ footer a{color:var(--gold);text-decoration:underline dashed}
 <!-- ABOUT -->
 <section id="about" class="sec">
   <h2>من نحن</h2>
-  <p>قوافل الأخيار شركة سعودية متخصصة في تنظيم الرحلات السياحية من الرياض إلى مكة المكرمة والمدينة المنورة. نقدم خدمات متكاملة تشمل النقل الحديث، والإقامة الفاخرة، وإدارة الفعاليات، مع التزامٍ بالجودة والراحة والموثوقية.</p>
+  <p>قوافل الأخيار شركة سعودية متخصصة في تنظيم الرحلات السياحية من الرياض إلى مكة المكرمة والمدينة المنورة، نقدم خدمات متكاملة تشمل النقل الحديث، والإقامة الفاخرة، وإدارة الفعاليات باحترافية وموثوقية تامة.</p>
 </section>
 
 <!-- SERVICES -->
@@ -202,7 +189,7 @@ footer a{color:var(--gold);text-decoration:underline dashed}
     <article class="card"><img src="images/service1.jpg" alt=""><div class="inner"><h3>رحلات الرياض - مكة - الرياض مع الإقامة</h3><p>تنظيم شامل لرحلات السفر مع إقامة فاخرة وخدمات مميزة.</p></div></article>
     <article class="card"><img src="images/service2.jpg" alt=""><div class="inner"><h3>رحلات الرياض - مكة - المدينة - الرياض مع الإقامة</h3><p>رحلة متكاملة لزيارة مكة والمدينة مع إقامة وتنقلات راقية.</p></div></article>
     <article class="card"><img src="images/service3.jpg" alt=""><div class="inner"><h3>النقل السياحي وVIP</h3><p>حافلات وسيارات فاخرة مجهزة بأعلى معايير الراحة والأمان.</p></div></article>
-    <article class="card"><img src="images/service4.jpg" alt=""><div class="inner"><h3>تنسيق الحجوزات وإدارة الفعاليات</h3><p>إدارة متكاملة للفعاليات وحجوزات الفنادق والطيران.</p></div></article>
+    <article class="card"><img src="images/service4.jpg" alt=""><div class="inner"><h3>تنسيق الحجوزات وإدارة الفعاليات</h3><p>تنسيق احترافي للحجوزات الفندقية وإدارة الفعاليات بأسلوب راقٍ.</p></div></article>
   </div>
 </section>
 
@@ -219,9 +206,6 @@ footer a{color:var(--gold);text-decoration:underline dashed}
         <div class="partner"><img src="images/partner-5.svg" alt="partner 5"></div>
         <div class="partner"><img src="images/partner-6.svg" alt="partner 6"></div>
         <div class="partner"><img src="images/partner-7.svg" alt="partner 7"></div>
-        <!-- تكرار بسيط لاستمرارية الحركة -->
-        <div class="partner"><img src="images/partner-1.svg" alt="partner 1"></div>
-        <div class="partner"><img src="images/partner-2.svg" alt="partner 2"></div>
       </div>
     </div>
   </div>
@@ -238,19 +222,19 @@ footer a{color:var(--gold);text-decoration:underline dashed}
   </div>
 </section>
 
-<!-- TESTIMONIALS GRID -->
+<!-- TESTIMONIALS -->
 <section id="testimonials" class="sec">
   <h2>قالوا عنا</h2>
   <div class="t-grid">
-    <article class="t-card"><div class="t-head"><div class="avatar">أ</div><div><strong>أبو محمد</strong><div class="stars">★★★★★</div></div></div><p>تنظيم راقٍ، مواعيد دقيقة، وتجربة سفر فاخرة من البداية حتى النهاية.</p></article>
-    <article class="t-card"><div class="t-head"><div class="avatar">س</div><div><strong>سارة.م</strong><div class="stars">★★★★★</div></div></div><p>خدمة عملاء احترافية وخيارات فنادق ممتازة. أوصي بهم دون تردد.</p></article>
+    <article class="t-card"><div class="t-head"><div class="avatar">أ</div><div><strong>أبو محمد</strong><div class="stars">★★★★★</div></div></div><p>تنظيم راقٍ ومواعيد دقيقة وتجربة سفر فاخرة من البداية حتى النهاية.</p></article>
+    <article class="t-card"><div class="t-head"><div class="avatar">س</div><div><strong>سارة.م</strong><div class="stars">★★★★★</div></div></div><p>خدمة عملاء احترافية وخيارات فنادق ممتازة. أنصح بهم بشدة.</p></article>
     <article class="t-card"><div class="t-head"><div class="avatar">ر</div><div><strong>شركة رواحل</strong><div class="stars">★★★★★</div></div></div><p>نقل VIP فعلاً وتجربة ضيافة فاخرة. شكراً لكم على رحلتنا المميزة.</p></article>
-    <article class="t-card"><div class="t-head"><div class="avatar">م</div><div><strong>مها السيف</strong><div class="stars">★★★★★</div></div></div><p>الإقامة في الفنادق الفاخرة والتنقل المريح كانت أكثر مما توقعت. أشعر بالرضا التام.</p></article>
+    <article class="t-card"><div class="t-head"><div class="avatar">م</div><div><strong>مها السيف</strong><div class="stars">★★★★★</div></div></div><p>الإقامة والتنظيم والمواصلات كانت أكثر من رائعة. تجربة مريحة ومميزة.</p></article>
   </div>
 </section>
 
 <!-- CONTACT -->
-<section id="contact" class "sec">
+<section id="contact" class="sec">
   <h2>تواصل معنا</h2>
   <form id="form" class="contact" autocomplete="on">
     <label>الاسم الكامل<input type="text" name="name" required placeholder="اسمك الثلاثي" /></label>
@@ -277,62 +261,16 @@ footer a{color:var(--gold);text-decoration:underline dashed}
 <a href="https://wa.me/966570905999" class="whatsapp" target="_blank" aria-label="WhatsApp">WA</a>
 
 <script>
-// HERO slider (5 images)
+// HERO slider
 const slides=[...document.querySelectorAll('.hero img')];
-let hs=0; setInterval(()=>{slides[hs].classList.remove('active'); hs=(hs+1)%slides.length; slides[hs].classList.add('active');},5000);
+let hs=0;
+setInterval(()=>{slides[hs].classList.remove('active');hs=(hs+1)%slides.length;slides[hs].classList.add('active');},5000);
 
-// Typewriter orange line
-const words=["حافلات حديثة","مقاعد مريحة","تكييف عالي الجودة","خدمات متنوعة","إقامة فعاليات وأنشطة","احجز الآن"];
-let wi=0, ci=0; const tw=document.getElementById('typewriter');
-function type(){ if(ci<words[wi].length){ tw.innerHTML=words[wi].slice(0,++ci)+'<span class="cursor"></span>'; setTimeout(type,90);} else { setTimeout(erase,1200);} }
-function erase(){ if(ci>0){ tw.innerHTML=words[wi].slice(0,--ci)+'<span class="cursor"></span>'; setTimeout(erase,45);} else { wi=(wi+1)%words.length; setTimeout(type,250);} }
-type();
-
-// About reveal
-const about=document.getElementById('about');
-new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)about.classList.add('in');})},{threshold:.2}).observe(about);
-
-// Services reveal (zoom-in)
-const cards=[...document.querySelectorAll('.card')];
-const co=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in'); co.unobserve(e.target);}})},{threshold:.15});
-cards.forEach(c=>co.observe(c));
-
-// Testimonials reveal
-const tCards=[...document.querySelectorAll('.t-card')];
-const tObs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in'); tObs.unobserve(e.target);}})},{threshold:.15});
-tCards.forEach(c=>tObs.observe(c));
-
-// Counters
-const stats=document.querySelector('#impact');
-const nums=[...document.querySelectorAll('.num')];
-let counted=false;
-new IntersectionObserver(es=>{
-  es.forEach(entry=>{
-    if(entry.isIntersecting && !counted){
-      counted=true;
-      nums.forEach(el=>{
-        const t=parseInt(el.dataset.target,10); const pre=el.dataset.prefix||""; const suf=el.dataset.suffix||"";
-        const start=performance.now(), dur=1500;
-        function step(ts){ const p=Math.min((ts-start)/dur,1); el.textContent=pre+Math.floor(p*t).toLocaleString('en-US')+suf; if(p<1)requestAnimationFrame(step); }
-        requestAnimationFrame(step);
-      });
-    }
-  });
-},{threshold:.35}).observe(stats);
-
-// WhatsApp form
-document.getElementById('form').addEventListener('submit',e=>{
-  e.preventDefault();
-  const d=new FormData(e.target);
-  const msg=`طلب جديد من موقع قوافل الأخيار:
-الاسم: ${d.get('name')}
-الجوال: ${d.get('phone')}
-الخدمة: ${d.get('service')}
-عدد الأشخاص: ${d.get('count')}
-التاريخ: ${d.get('date')}
-تفاصيل: ${d.get('details')}`;
-  window.open('https://wa.me/966570905999?text='+encodeURIComponent(msg),'_blank');
-});
-</script>
-</body>
-</html>
+// Smooth fade marketing lines
+const phrases=[
+  "رحلات فاخرة من الرياض إلى مكة والمدينة",
+  "نقل مريح وآمن بأسطول حديث",
+  "تنظيم دقيق يليق بثقتكم",
+  "إقامة فندقية راقية وخدمات مميزة",
+  "نحن نسافر بك براحة... وتعود بطمأنينة",
+  "احجز الآن مع قوافل الأخيار"
