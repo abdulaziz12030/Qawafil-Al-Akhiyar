@@ -7,22 +7,24 @@
 
 <!-- SEO -->
 <meta name="description" content="قوافل الأخيار للرحلات السياحية – رحلات فاخرة من الرياض إلى مكة والمدينة بخدمات فندقية راقية ونقل مريح وآمن. تجربة سفر متكاملة بثقة واحتراف.">
-<meta name="keywords" content="قوافل الأخيار, رحلات سياحية, مكة, المدينة, نقل VIP, خدمات فندقية, حجوزات, رحلات الرياض مكة, قوافل الأخيار للرحلات">
+<meta name="keywords" content="قوافل الأخيار, رحلات سياحية, مكة, المدينة, نقل VIP, فنادق, حجوزات, الرياض مكة, الرياض مكة المدينة">
 <meta name="author" content="قوافل الأخيار للرحلات السياحية">
 
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;800&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#0b1220;--fg:#e2e8f0;--gold:#FEB211;--gold2:#FFD46B;
-  --border:rgba(255,255,255,.12);--whatsapp:#25D366;
+  --bg:#0b1220;--fg:#e2e8f0;--muted:#c8d0de;
+  --gold:#FEB211;--gold2:#FFD46B;--border:rgba(255,255,255,.12);
+  --whatsapp:#25D366;
+  --glass:rgba(10,16,28,.35);
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{overflow-x:hidden;scroll-behavior:smooth}
-body{font-family:'Cairo',sans-serif;background:var(--bg);color:var(--fg);line-height:1.8}
+body{font-family:'Cairo',system-ui,sans-serif;background:var(--bg);color:var(--fg);line-height:1.85}
 h2{color:var(--gold);font-weight:800;font-size:clamp(22px,2.4vw,32px);margin-bottom:1rem;text-align:center}
 
-/* Header */
-header{position:sticky;top:0;z-index:50;background:rgba(0,0,0,.35);backdrop-filter:blur(12px);transition:background .25s,box-shadow .25s}
+/* ===== Header ===== */
+header{position:sticky;top:0;z-index:50;background:rgba(0,0,0,.35);backdrop-filter:blur(10px);transition:background .25s,box-shadow .25s}
 .header-wrap{max-width:1200px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:.8rem 1rem}
 .brand{display:flex;align-items:center;gap:.7rem}
 .brand img{width:44px;height:44px;border-radius:10px;border:1px solid var(--border)}
@@ -34,39 +36,40 @@ header{position:sticky;top:0;z-index:50;background:rgba(0,0,0,.35);backdrop-filt
 .sticky{box-shadow:0 6px 18px rgba(0,0,0,.25);background:rgba(0,0,0,.6)}
 @media(max-width:900px){.nav{display:none}}
 
-/* Hero */
-.hero{position:relative;height:88vh;overflow:hidden}
+/* ===== Hero ===== */
+.hero{position:relative;height:88vh;overflow:hidden;isolation:isolate}
 .hero img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.1);transition:opacity 1.2s ease,transform 10s ease}
 .hero img.bg.active{opacity:1;transform:scale(1.18)}
-.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.2),rgba(0,0,0,.8));z-index:1}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.2),rgba(0,0,0,.85));z-index:1}
 .hero-box{position:relative;z-index:2;height:100%;display:grid;place-items:center;text-align:center;padding:0 1rem}
-.hero-title{font-size:clamp(26px,3.2vw,42px);font-weight:800;text-shadow:0 6px 20px rgba(0,0,0,.6)}
-.hero-line{font-size:clamp(16px,2vw,22px);font-weight:700;color:var(--gold);min-height:34px;opacity:0;transition:opacity .6s ease}
+.hero-glass{display:inline-block;padding:14px 18px;border-radius:14px;background:var(--glass);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.15);box-shadow:0 8px 26px rgba(0,0,0,.25)}
+.hero-title{font-size:clamp(26px,3.2vw,42px);font-weight:800;text-shadow:0 6px 20px rgba(0,0,0,.5)}
+.hero-line{font-size:clamp(15px,2vw,20px);font-weight:700;color:var(--gold);min-height:30px;margin-top:.5rem;opacity:0;transition:opacity .6s ease}
 .hero-line.show{opacity:1}
 .btn-primary{margin-top:1rem;padding:.9rem 1.6rem;border:none;border-radius:999px;background:linear-gradient(90deg,var(--gold2),var(--gold));color:#111;font-weight:800;cursor:pointer;transition:.25s}
 .btn-primary:hover{transform:translateY(-3px);box-shadow:0 10px 20px rgba(254,178,17,.25)}
 
-/* About */
+/* ===== About (بدون صورة – خلفية موحدة) ===== */
 .about{max-width:900px;margin:auto;padding:3rem 1rem;text-align:center}
-.about-sub{color:var(--gold);font-weight:800;letter-spacing:.3px;margin-bottom:.4rem}
-.about p{max-width:700px;margin:auto;color:#d9dee8;text-align:justify}
+.about-sub{color:var(--gold);font-weight:800;letter-spacing:.3px;margin-bottom:.5rem}
+.about p{max-width:720px;margin:auto;color:#d9dee8;text-align:justify}
 
-/* Sections */
+/* ===== Sections ===== */
 section.sec{max-width:1200px;margin:auto;padding:3rem 1rem;text-align:center}
 
-/* Services */
+/* ===== Services ===== */
 .cards{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
-.card{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:.4s}
-.card:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(0,0,0,.3)}
+.card{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:.35s}
+.card:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(0,0,0,.35)}
 .card img{width:100%;height:190px;object-fit:cover}
 .card .inner{padding:1rem}
 
-/* Impact */
+/* ===== Impact ===== */
 .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin-top:1rem}
 .stat{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:14px;padding:1rem}
 .stat .num{color:var(--gold);font-size:clamp(26px,3vw,40px);font-weight:800}
 
-/* Testimonials */
+/* ===== Testimonials ===== */
 .t-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem;margin-top:1rem}
 .t-card{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:14px;padding:1rem;text-align:right;opacity:0;transform:translateY(14px);transition:.6s}
 .t-card.in{opacity:1;transform:none}
@@ -74,7 +77,7 @@ section.sec{max-width:1200px;margin:auto;padding:3rem 1rem;text-align:center}
 .avatar{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:rgba(254,178,17,.12);color:var(--gold);font-weight:800}
 .stars{color:var(--gold);font-size:14px}
 
-/* Partners */
+/* ===== Partners ===== */
 .partners{background:rgba(255,255,255,.03);border-top:1px solid rgba(255,255,255,.06);border-bottom:1px solid rgba(255,255,255,.06)}
 .wrap{max-width:1200px;margin:auto;padding:2rem 1rem}
 .marquee{overflow:hidden}
@@ -83,8 +86,9 @@ section.sec{max-width:1200px;margin:auto;padding:3rem 1rem;text-align:center}
 .partner img{width:100%;height:100%;object-fit:contain;filter:brightness(1.1)}
 .marquee:hover .track{animation-play-state:paused}
 @keyframes scrollLTR{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
+@media(max-width:820px){.track{animation-duration:9s}}
 
-/* Booking */
+/* ===== Booking ===== */
 .booking{background:rgba(255,255,255,.03);border:1px solid var(--border);padding:1.3rem;border-radius:14px;max-width:700px;margin:2rem auto}
 .booking form{display:grid;gap:.8rem;grid-template-columns:repeat(3,1fr)}
 .booking input,.booking select{background:rgba(255,255,255,.06);border:1px solid var(--border);color:var(--fg);padding:.85rem;border-radius:10px}
@@ -92,22 +96,29 @@ section.sec{max-width:1200px;margin:auto;padding:3rem 1rem;text-align:center}
 @media(max-width:820px){.booking form{grid-template-columns:1fr 1fr}}
 @media(max-width:520px){.booking form{grid-template-columns:1fr}}
 
-/* Footer */
+/* ===== Footer ===== */
 footer{padding:2rem 1rem;text-align:center;border-top:1px solid rgba(255,255,255,.08);color:#cbd5e1}
 footer .cr{color:#fff;font-size:.95rem;margin-top:.4rem}
-footer img{width:92px;margin-top:.6rem}
-.social-icons{display:flex;justify-content:center;gap:.8rem;margin-top:1rem;flex-wrap:wrap}
-.social-icons a{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:var(--gold);transition:.25s}
-.social-icons a svg{fill:#0b1220;width:22px;height:22px}
-.social-icons a:hover{transform:translateY(-3px);box-shadow:0 0 10px rgba(254,178,17,.4)}
+footer img{width:92px;height:auto;margin-top:.6rem}
 
-/* WhatsApp */
+/* Social icons (golden circle, white glyph) */
+.social-icons{display:flex;justify-content:center;gap:.8rem;margin-top:1rem;flex-wrap:wrap}
+.social-icons a{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:var(--gold);transition:.25s}
+.social-icons a:hover{transform:translateY(-3px);box-shadow:0 0 12px rgba(254,178,17,.45)}
+.social-icons svg{fill:#0b1220;width:22px;height:22px}
+
+/* ===== WhatsApp ===== */
 .whatsapp{position:fixed;left:18px;bottom:18px;width:56px;height:56px;border-radius:50%;background:var(--whatsapp);display:grid;place-items:center;z-index:70;box-shadow:0 10px 26px rgba(0,0,0,.35)}
 .whatsapp svg{fill:#fff;width:26px;height:26px}
+
+/* Reveal utility */
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .7s,transform .7s}
+.reveal.in{opacity:1;transform:none}
 </style>
 </head>
 <body>
 
+<!-- ===== Header ===== -->
 <header id="hdr">
   <div class="header-wrap">
     <div class="brand">
@@ -128,15 +139,15 @@ footer img{width:92px;margin-top:.6rem}
   </div>
 </header>
 
-<!-- Hero -->
-<section class="hero">
+<!-- ===== Hero ===== -->
+<section class="hero" aria-label="Hero">
   <img src="images/hero1.webp" class="bg active" alt="">
   <img src="images/hero2.webp" class="bg" alt="">
   <img src="images/hero3.webp" class="bg" alt="">
   <img src="images/hero4.webp" class="bg" alt="">
   <img src="images/hero5.webp" class="bg" alt="">
   <div class="hero-box">
-    <div>
+    <div class="hero-glass">
       <h1 class="hero-title">نأخذك إلى وجهتك بطمأنينة</h1>
       <div id="typewriter" class="hero-line"></div>
       <button class="btn-primary" onclick="document.querySelector('#booking').scrollIntoView({behavior:'smooth'})">احجز الآن</button>
@@ -144,51 +155,192 @@ footer img{width:92px;margin-top:.6rem}
   </div>
 </section>
 
-<!-- About -->
+<!-- ===== About (بدون صورة) ===== -->
 <section id="about" class="about">
   <div class="about-sub">رحلات تثق بها، تجربة لا تُنسى</div>
   <h2>من نحن</h2>
   <p>نحن في قوافل الأخيار للرحلات السياحية نسعى لتقديم تجربة سفر راقية تتجاوز التوقعات، بخدمات فندقية فاخرة ونقل مريح وتنظيم متكامل للرحلات من الرياض إلى مكة والمدينة، مع التزامنا بالجودة والثقة في كل التفاصيل. نحرص على رضا عملائنا عبر رحلات آمنة ومريحة تعكس قيم الضيافة السعودية الأصيلة.</p>
 </section>
 
-<!-- باقي الأقسام تبقى كما هي من النسخة السابقة -->
+<!-- ===== Services ===== -->
+<section id="services" class="sec">
+  <h2 class="reveal">خدماتنا</h2>
+  <p style="color:#cbd5e1;margin-bottom:1.5rem">نرافقكم بخدمات متكاملة في كل خطوة من رحلتكم</p>
+  <div class="cards">
+    <article class="card reveal"><img src="images/service1.jpg" alt=""><div class="inner"><h3>رحلات الرياض - مكة - الرياض مع الإقامة</h3></div></article>
+    <article class="card reveal"><img src="images/service2.jpg" alt=""><div class="inner"><h3>رحلات الرياض - مكة - المدينة - الرياض مع الإقامة</h3></div></article>
+    <article class="card reveal"><img src="images/service3.jpg" alt=""><div class="inner"><h3>النقل السياحي وVIP</h3></div></article>
+    <article class="card reveal"><img src="images/service4.jpg" alt=""><div class="inner"><h3>تنسيق الحجوزات وإدارة الفعاليات</h3></div></article>
+  </div>
+</section>
+
+<!-- ===== Impact ===== -->
+<section id="impact" class="sec">
+  <h2 class="reveal">أثرنا</h2>
+  <div class="stats">
+    <div class="stat reveal"><span class="num" data-target="17650" data-prefix="+">0</span><p>عدد الرحلات المنفذة</p></div>
+    <div class="stat reveal"><span class="num" data-target="270000" data-prefix="+">0</span><p>عدد العملاء المستفيدين</p></div>
+    <div class="stat reveal"><span class="num" data-target="25">0</span><p>سنوات الخبرة</p></div>
+    <div class="stat reveal"><span class="num" data-target="91" data-suffix="%">0</span><p>نسبة رضا العملاء</p></div>
+  </div>
+</section>
+
+<!-- ===== Testimonials ===== -->
+<section id="testimonials" class="sec">
+  <h2 class="reveal">قالوا عنا</h2>
+  <div class="t-grid">
+    <article class="t-card"><div class="t-head"><div class="avatar">أ</div><div><strong>أبو محمد</strong><div class="stars">★★★★★</div></div></div><p>تنظيم راقٍ ومواعيد دقيقة وتجربة سفر فاخرة من البداية حتى النهاية.</p></article>
+    <article class="t-card"><div class="t-head"><div class="avatar">س</div><div><strong>سارة.م</strong><div class="stars">★★★★★</div></div></div><p>خدمة عملاء احترافية وخيارات فنادق ممتازة. أنصح بهم بشدة.</p></article>
+    <article class="t-card"><div class="t-head"><div class="avatar">ر</div><div><strong>شركة رواحل</strong><div class="stars">★★★★★</div></div></div><p>نقل VIP فعلاً وتجربة ضيافة فاخرة. شكراً لكم على رحلتنا المميزة.</p></article>
+  </div>
+</section>
+
+<!-- ===== Partners ===== -->
+<section id="partners" class="partners">
+  <div class="wrap">
+    <h2 class="reveal">شركاء النجاح</h2>
+    <div class="marquee reveal">
+      <div class="track">
+        <div class="partner"><img src="images/partner-1.svg" alt=""></div>
+        <div class="partner"><img src="images/partner-2.svg" alt=""></div>
+        <div class="partner"><img src="images/partner-3.svg" alt=""></div>
+        <div class="partner"><img src="images/partner-4.svg" alt=""></div>
+        <div class="partner"><img src="images/partner-5.svg" alt=""></div>
+        <div class="partner"><img src="images/partner-6.svg" alt=""></div>
+        <div class="partner"><img src="images/partner-7.svg" alt=""></div>
+        <!-- تكرار اختياري للسلاسة -->
+        <div class="partner"><img src="images/partner-1.svg" alt=""></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Booking ===== -->
+<section id="booking" class="sec">
+  <h2 class="reveal">نموذج طلب الحجز</h2>
+  <div class="booking reveal">
+    <form id="bookForm">
+      <input type="text" name="name" placeholder="الاسم الكامل" required>
+      <input type="date" name="date" required>
+      <input type="number" name="people" placeholder="عدد الأشخاص" min="1" required>
+      <select name="service" required>
+        <option value="">الخدمة</option>
+        <option>الرياض - مكة - الرياض</option>
+        <option>الرياض - مكة - المدينة - الرياض</option>
+      </select>
+      <select name="transport" required>
+        <option value="">الناقل</option>
+        <option>رحلة بر سياحي</option>
+        <option>رحلة بر VIP</option>
+        <option>طيران</option>
+      </select>
+      <select name="accommodation" required>
+        <option value="">الإقامة</option>
+        <option>غرفة مفرد</option>
+        <option>ثنائي</option>
+        <option>رباعي</option>
+        <option>بدون</option>
+      </select>
+      <button type="submit">احجز الآن</button>
+    </form>
+  </div>
+</section>
+
 <!-- ===== Footer ===== -->
 <footer>
   <p>© جميع الحقوق محفوظة لـ قوافل الأخيار للرحلات السياحية</p>
   <div class="cr">رقم السجل التجاري: 1010448443</div>
   <img src="images/ministry-commerce.png" alt="شعار وزارة التجارة">
   <div class="social-icons">
-    <a href="https://www.instagram.com/q_alakhyar" target="_blank" title="Instagram">
-      <svg viewBox="0 0 24 24"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm5 6a4 4 0 1 0 0 8 4 4 0 0 0 0-8zm6.5-.5a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/></svg>
+    <!-- Instagram -->
+    <a href="https://www.instagram.com/q_alakhyar" target="_blank" title="Instagram" aria-label="Instagram">
+      <svg viewBox="0 0 24 24"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm5 6a4 4 0 1 0 0 8 4 4 0 0 0 0-8zm6.5-1.5a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/></svg>
     </a>
-    <a href="https://www.tiktok.com/@q_alakhyar" target="_blank" title="TikTok">
+    <!-- TikTok -->
+    <a href="https://www.tiktok.com/@q_alakhyar" target="_blank" title="TikTok" aria-label="TikTok">
       <svg viewBox="0 0 24 24"><path d="M16 8.5c1.5 1 3 1.5 4.5 1.5V6.8c-1.5 0-3-.5-4.5-1.5V8.5zM10 6a5 5 0 1 0 4 8v4a9 9 0 1 1 5-17v3a5 5 0 0 1-5-5H10z"/></svg>
     </a>
-    <a href="https://www.snapchat.com/add/q_alakhyar" target="_blank" title="Snapchat">
-      <svg viewBox="0 0 24 24"><path d="M12 2c3 0 5 2 5 4 0 1.2-.4 2-.4 2s1 .8 1.9 1M5 9s1-.8 1.9-1c0 0-.4-.8-.4-2 0-2 2-4 5-4"/></svg>
+    <!-- Snapchat -->
+    <a href="https://www.snapchat.com/add/q_alakhyar" target="_blank" title="Snapchat" aria-label="Snapchat">
+      <svg viewBox="0 0 24 24"><path d="M12 2c3 0 5 2 5 4 0 1.2-.4 2-.4 2s1 .8 1.9 1M5 9s1-.8 1.9-1c0 0-.4-.8-.4-2 0-2 2-4 5-4" fill="none" stroke="#0b1220" stroke-width="1.6"/></svg>
     </a>
-    <a href="https://x.com/QawafilAlakhyar" target="_blank" title="X (Twitter)">
-      <svg viewBox="0 0 24 24"><path d="M4 4l16 16M20 4L4 20" stroke-width="2" stroke="#0b1220" fill="none"/></svg>
+    <!-- X -->
+    <a href="https://x.com/QawafilAlakhyar" target="_blank" title="X" aria-label="X">
+      <svg viewBox="0 0 24 24"><path d="M4 4l16 16M20 4L4 20" fill="none" stroke="#0b1220" stroke-width="2" stroke-linecap="round"/></svg>
     </a>
   </div>
 </footer>
 
 <!-- WhatsApp floating -->
-<a href="https://wa.me/966500280668" class="whatsapp" target="_blank">
-  <svg viewBox="0 0 32 32"><path d="M19 17.6c-.3-.1-.5-.1-.7.1l-.5.5c-.2.2-.4.2-.6.1-1.2-.6-2.1-1.5-2.7-2.7-.1-.2-.1-.4.1-.6l.5-.5c.2-.2.2-.4.1-.7l-.7-2c-.1-.3-.3-.4-.6-.4h-.5c-.3 0-.7.1-.9.4-.5.5-.8 1.3-.8 2.1 0 .3 0 .6.1.9.9 3 3.2 5.3 6.2 6.2.3.1.6.1.9.1.8 0 1.6-.3 2.1-.8.3-.3.4-.6.4-.9v-.5c0-.2-.2-.4-.4-.5l-2-.8z" fill="#fff"/><path d="M16 3a13 13 0 0 0-11 19.7L4 29l6.5-1A13 13 0 1 0 16 3z" fill="#fff"/></svg>
+<a href="https://wa.me/966500280668" class="whatsapp" target="_blank" aria-label="WhatsApp">
+  <svg viewBox="0 0 32 32" aria-hidden="true">
+    <path d="M19 17.6c-.3-.1-.5-.1-.7.1l-.5.5c-.2.2-.4.2-.6.1-1.2-.6-2.1-1.5-2.7-2.7-.1-.2-.1-.4.1-.6l.5-.5c.2-.2.2-.4.1-.7l-.7-2c-.1-.3-.3-.4-.6-.4h-.5c-.3 0 -.7.1 -.9.4 -.5.5 -.8 1.3 -.8 2.1 0 .3 0 .6 .1 .9 .9 3 3.2 5.3 6.2 6.2 .3 .1 .6 .1 .9 .1 .8 0 1.6 -.3 2.1 -.8 .3 -.3 .4 -.6 .4 -.9 v-.5 c0 -.2 -.2 -.4 -.4 -.5 l-2 -.8 z" fill="#fff"/>
+    <path d="M16 3a13 13 0 0 0-11 19.7L4 29l6.5-1A13 13 0 1 0 16 3z" fill="#fff"/>
+  </svg>
 </a>
 
 <script>
+// ===== Header sticky =====
 const hdr=document.getElementById('hdr');
 window.addEventListener('scroll',()=>hdr.classList.toggle('sticky',window.scrollY>6));
 
+// ===== Hero slider (5s) =====
 const slides=[...document.querySelectorAll('.hero img.bg')];let si=0;
 setInterval(()=>{slides[si].classList.remove('active');si=(si+1)%slides.length;slides[si].classList.add('active');},5000);
 
-const lines=["رحلات فاخرة من الرياض إلى مكة والمدينة","نقل مريح وآمن بأسطول حديث","إقامة فندقية راقية وخدمات مميزة","تنظيم دقيق يليق بثقتكم","احجز الآن مع قوافل الأخيار"];
+// ===== Typewriter (no blink) =====
+const lines=[
+ "رحلات فاخرة من الرياض إلى مكة والمدينة",
+ "نقل مريح وآمن بأسطول حديث",
+ "إقامة فندقية راقية وخدمات مميزة",
+ "تنظيم دقيق يليق بثقتكم",
+ "احجز الآن مع قوافل الأخيار"
+];
 const tw=document.getElementById('typewriter');let wi=0;
 function nextLine(){tw.classList.remove('show');setTimeout(()=>{tw.textContent=lines[wi];tw.classList.add('show');wi=(wi+1)%lines.length;},250);}
 nextLine();setInterval(nextLine,4200);
+
+// ===== Reveal on scroll =====
+const revealEls=[...document.querySelectorAll('.reveal,.t-card')];
+const io=new IntersectionObserver(es=>{
+  es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+},{threshold:.15});
+revealEls.forEach(el=>io.observe(el));
+
+// ===== Counters (English digits) =====
+const nums=[...document.querySelectorAll('.num')]; let counted=false;
+new IntersectionObserver(es=>{
+  es.forEach(entry=>{
+    if(entry.isIntersecting && !counted){
+      counted=true;
+      nums.forEach(el=>{
+        const t=parseInt(el.dataset.target,10),
+              pre=el.dataset.prefix||"", suf=el.dataset.suffix||"";
+        const start=performance.now(), dur=1500;
+        function step(ts){
+          const p=Math.min((ts-start)/dur,1);
+          el.textContent=pre+Math.floor(p*t).toLocaleString('en-US')+suf;
+          if(p<1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+      });
+    }
+  });
+},{threshold:.35}).observe(document.querySelector('#impact'));
+
+// ===== Booking to WhatsApp =====
+document.getElementById('bookForm').addEventListener('submit',e=>{
+  e.preventDefault();
+  const d=new FormData(e.target);
+  const msg=`طلب حجز جديد:
+الاسم: ${d.get('name')}
+التاريخ: ${d.get('date')}
+عدد الأشخاص: ${d.get('people')}
+الخدمة: ${d.get('service')}
+الناقل: ${d.get('transport')}
+الإقامة: ${d.get('accommodation')}`;
+  window.open('https://wa.me/966500280668?text='+encodeURIComponent(msg),'_blank');
+});
 </script>
 </body>
 </html>
