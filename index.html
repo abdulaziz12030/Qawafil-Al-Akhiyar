@@ -6,6 +6,7 @@
 <title>قوافل الأخيار لتنظيم الرحلات</title>
 <meta name="description" content="قوافل الأخيار لتنظيم الرحلات – رحلات فاخرة من الرياض إلى مكة والمدينة بنقل VIP وإقامة فندقية راقية وتنظيم دقيق يليق بثقتكم.">
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;800&display=swap" rel="stylesheet">
+
 <style>
 :root{
  --bg:#0b1220;--fg:#e2e8f0;--gold:#FEB211;--gold2:#FFD46B;
@@ -29,6 +30,45 @@ body{font-family:'Cairo',sans-serif;background:var(--bg);color:var(--fg);overflo
 .btn-primary{margin-top:.9rem;padding:.9rem 1.6rem;border:none;border-radius:999px;background:linear-gradient(90deg,var(--gold2),var(--gold));color:#111;font-weight:800;cursor:pointer;transition:.25s}
 .btn-primary:hover{transform:translateY(-3px);box-shadow:0 10px 20px rgba(254,178,17,.25)}
 
+/* ===== GENERAL SECTIONS ===== */
+section{max-width:1200px;margin:auto;padding:3rem 1rem;text-align:center}
+h2.gradient{background:linear-gradient(90deg,var(--gold),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-align:center;margin-bottom:1rem;font-size:clamp(22px,2.4vw,32px);font-weight:800}
+
+/* ===== ABOUT ===== */
+.about p{color:#e6e9f2;font-size:1.1rem;max-width:900px;margin:auto}
+
+/* ===== SERVICES ===== */
+.cards{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.card{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:transform .35s, box-shadow .35s, border-color .35s}
+.card:hover{transform:translateY(-4px);box-shadow:0 10px 30px rgba(0,0,0,.35);border-color:rgba(254,178,17,.35)}
+.card img{width:100%;height:200px;object-fit:cover;transition:transform .4s,filter .4s}
+.card:hover img{transform:scale(1.05);filter:brightness(1.12)}
+.card .inner{padding:1rem}
+
+/* ===== IMPACT ===== */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin-top:1rem}
+.stat{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:14px;padding:1rem}
+.stat .num{
+  background:linear-gradient(90deg,var(--gold),var(--gold2));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  font-size:clamp(28px,3.2vw,42px);font-weight:800
+}
+
+/* ===== TESTIMONIALS ===== */
+.t-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem;margin-top:1rem}
+.t-card{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:14px;padding:1rem;text-align:right;transition:.6s}
+.t-head{display:flex;align-items:center;gap:.8rem;margin-bottom:.4rem}
+.avatar{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:rgba(254,178,17,.12);color:var(--gold);font-weight:800}
+.stars{color:var(--gold);font-size:14px}
+
+/* ===== PARTNERS ===== */
+.partners{background:rgba(255,255,255,.03);border-top:1px solid rgba(255,255,255,.06);border-bottom:1px solid rgba(255,255,255,.06)}
+.marquee{overflow:hidden}
+.track{display:flex;gap:2rem;animation:scrollLTR 12s linear infinite;padding-inline:1rem}
+.partner{flex:0 0 auto;width:160px;height:64px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:14px;padding:.6rem}
+.partner img{width:100%;height:100%;object-fit:contain;filter:brightness(1.05)}
+@keyframes scrollLTR{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
+
 /* ===== BOOKING ===== */
 .booking{background:rgba(255,255,255,.03);border:1px solid var(--border);padding:1.8rem;border-radius:16px;max-width:750px;margin:2rem auto}
 .booking form{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
@@ -41,28 +81,32 @@ body{font-family:'Cairo',sans-serif;background:var(--bg);color:var(--fg);overflo
  border-radius:12px;
  font-size:1.08rem;
  width:100%;
+ box-sizing:border-box;
  transition:border-color .3s,background .3s;
+ appearance:none;
 }
-.booking input,
-.booking select {
-  background: rgba(255, 255, 255, .06);
-  border: 1px solid var(--border);
-  color: #fff;
-  padding: 1.15rem;
-  border-radius: 12px;
-  font-size: 1.08rem;
-  width: 100%;
-  box-sizing: border-box;
-  transition: border-color .3s, background .3s;
-  appearance: none; /* يجعل التاريخ متوازي مع البقية */
+.booking input[type="date"]{
+  padding-inline-end:1rem;
+  text-align:right;
 }
+.date-hint{position:absolute;inset:0;pointer-events:none;display:flex;align-items:center;justify-content:flex-start;color:#aaa;padding-inline:1rem;font-size:1.05rem}
+.field.focus .date-hint,.field.has-value .date-hint{display:none}
+.booking button{grid-column:1/-1;padding:1.1rem;border:none;border-radius:12px;font-weight:800;cursor:pointer;background:linear-gradient(90deg,var(--gold2),var(--gold));color:#111;font-size:1.08rem}
+.booking button:hover{transform:translateY(-2px);box-shadow:0 6px 14px rgba(254,178,17,.3)}
+@media(max-width:520px){.booking input,.booking select,.booking button{font-size:1.15rem;padding:1.2rem}}
 
-/* ضبط أيقونة التاريخ */
-.booking input[type="date"] {
-  padding-inline-end: 1rem; /* توازن مع البقية */
-  text-align: right; /* لعرض التاريخ من اليمين */
-}
-
+/* ===== FOOTER ===== */
+footer{padding:2rem 1rem;text-align:center;border-top:1px solid rgba(255,255,255,.08);color:#cbd5e1}
+.social-row{display:flex;gap:.8rem;justify-content:center;align-items:center;flex-wrap:wrap;margin-bottom:1rem}
+.social-row img{width:40px;height:40px;transition:transform .25s}
+.social-row img:hover{transform:translateY(-3px)}
+footer img{width:92px;height:auto;margin-top:.6rem}
+footer .cr{color:#fff;margin-top:.4rem}
+.whatsapp{position:fixed;left:16px;bottom:16px;width:56px;height:56px;border-radius:50%;background:var(--whatsapp);display:grid;place-items:center;z-index:60;box-shadow:0 10px 26px rgba(0,0,0,.35)}
+.whatsapp img{width:28px;height:28px}
+</style>
+</head>
+<body>
 
 <!-- HERO -->
 <section class="hero">
@@ -79,111 +123,113 @@ body{font-family:'Cairo',sans-serif;background:var(--bg);color:var(--fg);overflo
 </section>
 
 <!-- ABOUT -->
-<section id="about" class="booking">
- <h2 style="background:linear-gradient(90deg,var(--gold),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-align:center;margin-bottom:1rem;font-weight:800;">من نحن</h2>
- <p style="text-align:center;font-size:1.1rem;color:#eaeaea;">قوافل الأخيار لتنظيم الرحلات وجهتكم الأولى للرحلات الفاخرة من الرياض إلى مكة والمدينة. نقدّم نقلاً مريحًا وآمنًا بأسطول حديث، وإقامة فندقية راقية، وتنظيمًا دقيقًا يليق بثقتكم.</p>
+<section id="about" class="about">
+ <h2 class="gradient">من نحن</h2>
+ <p>قوافل الأخيار لتنظيم الرحلات وجهتكم الأولى للرحلات الفاخرة من الرياض إلى مكة والمدينة. نقدّم نقلاً مريحًا وآمنًا بأسطول حديث، وإقامة فندقية راقية، وتنظيمًا دقيقًا يليق بثقتكم.</p>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+ <h2 class="gradient">خدماتنا</h2>
+ <div class="cards">
+  <article class="card"><img src="images/service1.jpg"><div class="inner"><h3>رحلات الرياض - مكة - الرياض مع الإقامة</h3></div></article>
+  <article class="card"><img src="images/service2.jpg"><div class="inner"><h3>رحلات الرياض - مكة - المدينة - الرياض مع الإقامة</h3></div></article>
+  <article class="card"><img src="images/service3.jpg"><div class="inner"><h3>النقل السياحي وVIP</h3></div></article>
+  <article class="card"><img src="images/service4.jpg"><div class="inner"><h3>تنسيق الحجوزات وإدارة الفعاليات</h3></div></article>
+ </div>
+</section>
+
+<!-- IMPACT -->
+<section id="impact">
+ <h2 class="gradient">أثرنا</h2>
+ <div class="stats">
+  <div class="stat"><span class="num" data-target="17650" data-prefix="+">0</span><p>عدد الرحلات المنفذة</p></div>
+  <div class="stat"><span class="num" data-target="270000" data-prefix="+">0</span><p>عدد العملاء المستفيدين</p></div>
+  <div class="stat"><span class="num" data-target="25">0</span><p>سنوات الخبرة</p></div>
+  <div class="stat"><span class="num" data-target="91" data-suffix="%">0</span><p>نسبة رضا العملاء</p></div>
+ </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+ <h2 class="gradient">قالوا عنا</h2>
+ <div class="t-grid">
+  <article class="t-card"><div class="t-head"><div class="avatar">أ</div><div><strong>أبو محمد</strong><div class="stars">★★★★★</div></div></div><p>تنظيم راقٍ ومواعيد دقيقة وتجربة سفر فاخرة من البداية حتى النهاية.</p></article>
+  <article class="t-card"><div class="t-head"><div class="avatar">س</div><div><strong>سارة.م</strong><div class="stars">★★★★★</div></div></div><p>خدمة عملاء احترافية وخيارات فنادق ممتازة. أنصح بهم بشدة.</p></article>
+  <article class="t-card"><div class="t-head"><div class="avatar">ر</div><div><strong>شركة رواحل</strong><div class="stars">★★★★★</div></div></div><p>نقل VIP فعلاً وتجربة ضيافة فاخرة. شكراً لكم على رحلتنا المميزة.</p></article>
+ </div>
+</section>
+
+<!-- PARTNERS -->
+<section id="partners" class="partners">
+ <h2 class="gradient">شركاء النجاح</h2>
+ <div class="marquee">
+  <div class="track">
+   <div class="partner"><img src="images/partner-1.svg"></div>
+   <div class="partner"><img src="images/partner-2.svg"></div>
+   <div class="partner"><img src="images/partner-3.svg"></div>
+   <div class="partner"><img src="images/partner-4.svg"></div>
+   <div class="partner"><img src="images/partner-5.svg"></div>
+   <div class="partner"><img src="images/partner-6.svg"></div>
+   <div class="partner"><img src="images/partner-7.svg"></div>
+  </div>
+ </div>
 </section>
 
 <!-- BOOKING -->
 <section id="booking" class="booking">
- <h2 style="background:linear-gradient(90deg,var(--gold),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-align:center;margin-bottom:1rem;font-weight:800;">نموذج طلب الحجز</h2>
+ <h2 class="gradient">نموذج طلب الحجز</h2>
  <form id="bookForm" novalidate>
-   <div class="field"><input type="text" name="name" placeholder="الاسم الكامل" required></div>
-   <div class="field" id="dateField">
-     <span class="date-hint">📅</span>
-     <input type="date" name="date" required>
-   </div>
-   <div class="field"><input type="text" inputmode="numeric" pattern="[0-9٠-٩۰-۹]*" name="people" placeholder="عدد الأشخاص" required></div>
-   <div class="field">
-     <select name="service" required>
-       <option value="">الخدمة</option>
-       <option>الرياض - مكة - الرياض</option>
-       <option>الرياض - مكة - المدينة - الرياض</option>
-     </select>
-   </div>
-   <div class="field">
-     <select name="transport" required>
-       <option value="">الناقل</option>
-       <option>رحلة بر سياحي</option>
-       <option>رحلة بر VIP</option>
-       <option>طيران</option>
-     </select>
-   </div>
-   <div class="field">
-     <select name="accommodation" required>
-       <option value="">الإقامة</option>
-       <option>غرفة مفرد</option>
-       <option>ثنائي</option>
-       <option>رباعي</option>
-       <option>بدون</option>
-     </select>
-   </div>
-   <button type="submit">احجز الآن</button>
+  <div class="field"><input type="text" name="name" placeholder="الاسم الكامل" required></div>
+  <div class="field" id="dateField">
+   <span class="date-hint">📅 التاريخ / موعد الرحلة</span>
+   <input type="date" name="date" required>
+  </div>
+  <div class="field"><input type="text" inputmode="numeric" pattern="[0-9٠-٩۰-۹]*" name="people" placeholder="عدد الأشخاص" required></div>
+  <div class="field">
+   <select name="service" required>
+    <option value="">الخدمة</option>
+    <option>الرياض - مكة - الرياض</option>
+    <option>الرياض - مكة - المدينة - الرياض</option>
+   </select>
+  </div>
+  <div class="field">
+   <select name="transport" required>
+    <option value="">الناقل</option>
+    <option>رحلة بر سياحي</option>
+    <option>رحلة بر VIP</option>
+    <option>طيران</option>
+   </select>
+  </div>
+  <div class="field">
+   <select name="accommodation" required>
+    <option value="">الإقامة</option>
+    <option>غرفة مفرد</option>
+    <option>ثنائي</option>
+    <option>رباعي</option>
+    <option>بدون</option>
+   </select>
+  </div>
+  <button type="submit">احجز الآن</button>
  </form>
 </section>
 
+<!-- FOOTER -->
+<footer>
+ <div class="social-row">
+  <a href="https://www.instagram.com/q_alakhyar" target="_blank"><img src="images/social/instagram.svg"></a>
+  <a href="https://www.tiktok.com/@q_alakhyar" target="_blank"><img src="images/social/tiktok.svg"></a>
+  <a href="https://www.snapchat.com/add/q_alakhyar" target="_blank"><img src="images/social/snapchat.svg"></a>
+  <a href="https://x.com/QawafilAlakhyar" target="_blank"><img src="images/social/x.svg"></a>
+ </div>
+ <p>© جميع الحقوق محفوظة لـ قوافل الأخيار لتنظيم الرحلات</p>
+ <div class="cr">رقم السجل التجاري: 1010448443</div>
+ <img src="images/ministry-commerce.png" alt="شعار وزارة التجارة">
+</footer>
+
 <!-- WhatsApp Floating -->
-<a href="https://wa.me/966500280668" target="_blank" aria-label="WhatsApp"
-style="position:fixed;left:16px;bottom:16px;width:56px;height:56px;border-radius:50%;background:var(--whatsapp);display:grid;place-items:center;z-index:60;box-shadow:0 10px 26px rgba(0,0,0,.35)">
- <img src="images/social/whatsapp.svg" alt="WhatsApp" style="width:28px;height:28px">
-</a>
+<a href="https://wa.me/966500280668" class="whatsapp" target="_blank"><img src="images/social/whatsapp.svg"></a>
 
 <script>
-/* === Hero Slider === */
-const slides=[...document.querySelectorAll('.hero img.bg')];let si=0;
-setInterval(()=>{slides[si].classList.remove('active');si=(si+1)%slides.length;slides[si].classList.add('active');},7000);
-
-/* === Hero Text (Fade-out → Delay → Fade-in) === */
-const lines=[
- "رحلات فاخرة من الرياض إلى مكة والمدينة",
- "نقل مريح وآمن بأسطول حديث",
- "إقامة فندقية راقية وخدمات مميزة",
- "تنظيم دقيق يليق بثقتكم",
- "احجز الآن مع قوافل الأخيار"
-];
-const tw=document.getElementById('typewriter');let wi=0;
-function nextLine(){
- tw.style.opacity=0;
- setTimeout(()=>{
-   tw.textContent=lines[wi];
-   wi=(wi+1)%lines.length;
-   tw.style.opacity=1;
- },300); // delay بين الجمل
-}
-nextLine();
-setInterval(nextLine,window.innerWidth<=600?7500:6000);
-
-/* === Placeholder للتاريخ === */
-const dateField=document.getElementById('dateField');
-const dateInput=dateField.querySelector('input[type="date"]');
-function toggleHint(){dateField.classList.toggle('has-value',!!dateInput.value);}
-dateInput.addEventListener('focus',()=>dateField.classList.add('focus'));
-dateInput.addEventListener('blur',()=>dateField.classList.remove('focus'));
-dateInput.addEventListener('input',toggleHint);
-toggleHint();
-
-/* === Normalize Arabic/English digits === */
-function normalizeDigits(str){
- const a={'٠':'0','١':'1','٢':'2','٣':'3','٤':'4','٥':'5','٦':'6','٧':'7','٨':'8','٩':'9'};
- const p={'۰':'0','۱':'1','۲':'2','۳':'3','۴':'4','۵':'5','۶':'6','۷':'7','۸':'8','۹':'9'};
- return String(str).replace(/[٠-٩]/g,d=>a[d]).replace(/[۰-۹]/g,d=>p[d]);
-}
-
-/* === إرسال الطلب عبر واتساب === */
-document.getElementById('bookForm').addEventListener('submit',e=>{
- e.preventDefault();
- const d=new FormData(e.target);
- const people=normalizeDigits(d.get('people')).replace(/\D+/g,'');
- if(!people||Number(people)<1){alert('يرجى إدخال عدد أشخاص صحيح.');return;}
- const msg=`طلب حجز جديد:
-الاسم: ${d.get('name')}
-التاريخ: ${d.get('date')}
-عدد الأشخاص: ${people}
-الخدمة: ${d.get('service')}
-الناقل: ${d.get('transport')}
-الإقامة: ${d.get('accommodation')}`;
- window.open('https://wa.me/966500280668?text='+encodeURIComponent(msg),'_blank');
-});
-</script>
-</body>
-</html>
+/* === HERO SLIDER === */
+const slides=[...document.querySelectorAll('.hero img.bg')];let
