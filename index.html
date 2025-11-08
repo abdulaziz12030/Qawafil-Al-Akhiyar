@@ -28,14 +28,16 @@
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{overflow-x:hidden;scroll-behavior:smooth}
 body{font-family:'Cairo',system-ui,sans-serif;background:var(--bg);color:var(--fg);line-height:1.85}
-h2{color:#fff;font-size:clamp(22px,2.4vw,32px);text-align:center;margin-bottom:1rem;font-weight:800}
+.container{max-width:1200px;margin:auto;padding:0 1rem}
+h2{font-size:clamp(22px,2.4vw,32px);text-align:center;margin-bottom:1rem;font-weight:800}
+h2.gradient{background:linear-gradient(90deg,var(--gold),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 
 /* Header */
-header{position:sticky;top:0;z-index:20;background:rgba(0,0,0,.45);backdrop-filter:blur(10px)}
+header{position:sticky;top:0;z-index:30;background:rgba(0,0,0,.45);backdrop-filter:blur(10px)}
 .header-wrap{max-width:1200px;margin:auto;padding:.8rem 1rem;display:flex;justify-content:space-between;align-items:center}
 .brand{display:flex;align-items:center;gap:.7rem}
 .brand img{width:48px;height:48px;border-radius:10px;border:1px solid var(--border)}
-.brand .title{font-weight:800}
+.brand .title{font-weight:800;color:#fff}
 .brand small{display:block;color:var(--gold)}
 .nav{display:flex;gap:1rem}
 .nav a{color:#fff;text-decoration:none;padding:.4rem .8rem;border-radius:999px}
@@ -44,12 +46,26 @@ header{position:sticky;top:0;z-index:20;background:rgba(0,0,0,.45);backdrop-filt
 
 /* Hero */
 .hero{position:relative;height:88vh;overflow:hidden;isolation:isolate}
-.hero img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.1);transition:opacity 1.2s ease,transform 10s ease}
-.hero img.bg.active{opacity:1;transform:scale(1.18)}
-.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.2),rgba(0,0,0,.82));z-index:1}
+.hero img.bg{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  opacity:0;transition:opacity 1.2s ease;transform:scale(1.15);
+}
+.hero img.bg.active{
+  opacity:1;animation:panZoom 10s ease-in-out forwards;
+}
+@keyframes panZoom{
+  0%{transform:scale(1.12) translateY(0)}
+  50%{transform:scale(1.18) translateY(-6px)}
+  100%{transform:scale(1.14) translateY(0)}
+}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.18),rgba(0,0,0,.82));z-index:1}
 .hero-box{position:relative;z-index:2;height:100%;display:grid;place-items:center;text-align:center;padding:0 1rem}
-.hero-glass{display:inline-block;padding:14px 18px;border-radius:14px;background:rgba(0,0,0,.42);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.15)}
-.hero-title{font-size:clamp(26px,3.2vw,40px);font-weight:800;color:#fff;text-shadow:0 6px 18px rgba(0,0,0,.55)}
+.hero-title{
+  font-size:clamp(26px,3.2vw,40px);font-weight:800;color:#fff;
+  text-shadow:0 6px 18px rgba(0,0,0,.55);opacity:0;transform:translateY(-8px);
+  transition:opacity .7s ease, transform .7s ease;
+}
+.hero-title.entered{opacity:1;transform:none}
 .hero-line{font-size:clamp(15px,2vw,20px);font-weight:700;color:var(--gold);min-height:30px;margin-top:.5rem;opacity:0;transition:opacity .55s ease}
 .hero-line.show{opacity:1}
 .btn-primary{margin-top:1rem;padding:.9rem 1.6rem;border:none;border-radius:999px;background:linear-gradient(90deg,var(--gold2),var(--gold));color:#111;font-weight:800;cursor:pointer;transition:.25s}
@@ -64,15 +80,16 @@ section.sec{max-width:1200px;margin:auto;padding:3rem 1rem;text-align:center}
 
 /* Services */
 .cards{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
-.card{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:.35s}
-.card:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(0,0,0,.35)}
-.card img{width:100%;height:190px;object-fit:cover}
+.card{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:transform .35s, box-shadow .35s, border-color .35s}
+.card:hover{transform:translateY(-4px);box-shadow:0 10px 30px rgba(0,0,0,.35);border-color:rgba(254,178,17,.35)}
+.card img{width:100%;height:200px;object-fit:cover;transition:transform .4s ease, filter .4s ease}
+.card:hover img{transform:scale(1.05);filter:brightness(1.12)}
 .card .inner{padding:1rem}
 
 /* Impact */
 .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin-top:1rem}
 .stat{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:14px;padding:1rem}
-.stat .num{color:var(--gold);font-size:clamp(26px,3vw,40px);font-weight:800}
+.stat .num{background:linear-gradient(90deg,var(--gold),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-size:clamp(26px,3vw,40px);font-weight:800}
 
 /* Testimonials */
 .t-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem;margin-top:1rem}
@@ -103,11 +120,11 @@ section.sec{max-width:1200px;margin:auto;padding:3rem 1rem;text-align:center}
 
 /* Footer */
 footer{padding:2rem 1rem;text-align:center;border-top:1px solid rgba(255,255,255,.08);color:#cbd5e1}
-footer .cr{color:#fff;margin-top:.4rem}
 footer img{width:92px;height:auto;margin-top:.6rem}
+footer .cr{color:#fff;margin-top:.4rem}
 
 /* Social icons row (footer) */
-.social-row{display:flex;gap:.8rem;justify-content:center;align-items:center;flex-wrap:wrap;margin-top:1rem}
+.social-row{display:flex;gap:.8rem;justify-content:center;align-items:center;flex-wrap:wrap;margin-bottom:1rem}
 .social-row img{width:40px;height:40px;display:block;transition:transform .25s}
 .social-row img:hover{transform:translateY(-3px)}
 
@@ -143,7 +160,7 @@ footer img{width:92px;height:auto;margin-top:.6rem}
       <a href="#impact">أثرنا</a>
       <a href="#testimonials">قالوا عنا</a>
       <a href="#partners">شركاء النجاح</a>
-      <a href="#booking">احجز الآن</a>
+      <a href="#booking">نموذج طلب الحجز</a>
     </nav>
   </div>
 </header>
@@ -156,24 +173,22 @@ footer img{width:92px;height:auto;margin-top:.6rem}
   <img src="images/hero4.webp" class="bg" alt="">
   <img src="images/hero5.webp" class="bg" alt="">
   <div class="hero-box">
-    <div class="hero-glass">
-      <h1 class="hero-title">نأخذك إلى وجهتك بطمأنينة</h1>
-      <div id="typewriter" class="hero-line"></div>
-      <button class="btn-primary" onclick="document.querySelector('#booking').scrollIntoView({behavior:'smooth'})">احجز الآن</button>
-    </div>
+    <h1 class="hero-title" id="heroTitle">نأخذك إلى وجهتك بطمأنينة</h1>
+    <div id="typewriter" class="hero-line"></div>
+    <button class="btn-primary" onclick="document.querySelector('#booking').scrollIntoView({behavior:'smooth'})">احجز الآن</button>
   </div>
 </section>
 
 <!-- About (بعد الهيرو مباشرة) -->
 <section id="about" class="about">
-  <h2>من نحن</h2>
-  <p>قوافل الأخيار لتنظيم الرحلات وجهتكم الأولى للرحلات الفاخرة من الرياض إلى مكة والمدينة. نقدّم نقلاً مريحًا وآمنًا بأسطول حديث، وإقامة فندقية راقية، وتنظيمًا دقيقًا يليق بثقتكم.</p>
+  <h2 class="gradient reveal">من نحن</h2>
+  <p class="reveal">قوافل الأخيار لتنظيم الرحلات وجهتكم الأولى للرحلات الفاخرة من الرياض إلى مكة والمدينة. نقدّم نقلاً مريحًا وآمنًا بأسطول حديث، وإقامة فندقية راقية، وتنظيمًا دقيقًا يليق بثقتكم.</p>
 </section>
 
 <!-- Services -->
 <section id="services" class="sec">
-  <h2 class="reveal">خدماتنا</h2>
-  <p style="color:var(--muted);margin-bottom:1.2rem">نرافقكم بخدمات متكاملة في كل خطوة من رحلتكم</p>
+  <h2 class="gradient reveal">خدماتنا</h2>
+  <p class="reveal" style="color:var(--muted);margin-bottom:1.2rem">نرافقكم بخدمات متكاملة في كل خطوة من رحلتكم</p>
   <div class="cards">
     <article class="card reveal"><img src="images/service1.jpg" alt=""><div class="inner"><h3>رحلات الرياض - مكة - الرياض مع الإقامة</h3></div></article>
     <article class="card reveal"><img src="images/service2.jpg" alt=""><div class="inner"><h3>رحلات الرياض - مكة - المدينة - الرياض مع الإقامة</h3></div></article>
@@ -184,7 +199,7 @@ footer img{width:92px;height:auto;margin-top:.6rem}
 
 <!-- Impact -->
 <section id="impact" class="sec">
-  <h2 class="reveal">أثرنا</h2>
+  <h2 class="gradient reveal">أثرنا</h2>
   <div class="stats">
     <div class="stat reveal"><span class="num" data-target="17650" data-prefix="+">0</span><p>عدد الرحلات المنفذة</p></div>
     <div class="stat reveal"><span class="num" data-target="270000" data-prefix="+">0</span><p>عدد العملاء المستفيدين</p></div>
@@ -195,7 +210,7 @@ footer img{width:92px;height:auto;margin-top:.6rem}
 
 <!-- Testimonials -->
 <section id="testimonials" class="sec">
-  <h2 class="reveal">قالوا عنا</h2>
+  <h2 class="gradient reveal">قالوا عنا</h2>
   <div class="t-grid">
     <article class="t-card"><div class="t-head"><div class="avatar">أ</div><div><strong>أبو محمد</strong><div class="stars">★★★★★</div></div></div><p>تنظيم راقٍ ومواعيد دقيقة وتجربة سفر فاخرة من البداية حتى النهاية.</p></article>
     <article class="t-card"><div class="t-head"><div class="avatar">س</div><div><strong>سارة.م</strong><div class="stars">★★★★★</div></div></div><p>خدمة عملاء احترافية وخيارات فنادق ممتازة. أنصح بهم بشدة.</p></article>
@@ -206,7 +221,7 @@ footer img{width:92px;height:auto;margin-top:.6rem}
 <!-- Partners -->
 <section id="partners" class="partners">
   <div class="wrap">
-    <h2 class="reveal">شركاء النجاح</h2>
+    <h2 class="gradient reveal">شركاء النجاح</h2>
     <div class="marquee reveal">
       <div class="track">
         <div class="partner"><img src="images/partner-1.svg" alt=""></div>
@@ -216,7 +231,6 @@ footer img{width:92px;height:auto;margin-top:.6rem}
         <div class="partner"><img src="images/partner-5.svg" alt=""></div>
         <div class="partner"><img src="images/partner-6.svg" alt=""></div>
         <div class="partner"><img src="images/partner-7.svg" alt=""></div>
-        <!-- تكرار اختياري للسلاسة -->
         <div class="partner"><img src="images/partner-1.svg" alt=""></div>
       </div>
     </div>
@@ -225,7 +239,7 @@ footer img{width:92px;height:auto;margin-top:.6rem}
 
 <!-- Booking -->
 <section id="booking" class="sec">
-  <h2 class="reveal">نموذج طلب الحجز</h2>
+  <h2 class="gradient reveal">نموذج طلب الحجز</h2>
   <div class="booking reveal">
     <form id="bookForm">
       <input type="text" name="name" placeholder="الاسم الكامل" required>
@@ -256,26 +270,38 @@ footer img{width:92px;height:auto;margin-top:.6rem}
 
 <!-- Footer -->
 <footer>
-  <p>© جميع الحقوق محفوظة لـ قوافل الأخيار لتنظيم الرحلات</p>
-  <div class="cr">رقم السجل التجاري: 1010448443</div>
-  <img src="images/ministry-commerce.png" alt="شعار وزارة التجارة">
+  <!-- سوشال فوق الحقوق -->
   <div class="social-row">
     <a href="https://www.instagram.com/q_alakhyar" target="_blank" aria-label="Instagram"><img src="images/social/instagram.svg" alt="Instagram"></a>
     <a href="https://www.tiktok.com/@q_alakhyar" target="_blank" aria-label="TikTok"><img src="images/social/tiktok.svg" alt="TikTok"></a>
     <a href="https://www.snapchat.com/add/q_alakhyar" target="_blank" aria-label="Snapchat"><img src="images/social/snapchat.svg" alt="Snapchat"></a>
     <a href="https://x.com/QawafilAlakhyar" target="_blank" aria-label="X"><img src="images/social/x.svg" alt="X"></a>
   </div>
+
+  <p>© جميع الحقوق محفوظة لـ قوافل الأخيار لتنظيم الرحلات</p>
+  <div class="cr">رقم السجل التجاري: 1010448443</div>
+  <img src="images/ministry-commerce.png" alt="شعار وزارة التجارة">
 </footer>
 
-<!-- WhatsApp floating -->
+<!-- زر واتساب عائم -->
 <a href="https://wa.me/966500280668" class="whatsapp" target="_blank" aria-label="WhatsApp">
   <img src="images/social/whatsapp.svg" alt="WhatsApp">
 </a>
 
 <script>
-// ===== Hero slider (5s) =====
+// ===== Hero slider (5s) + reset parallax animation =====
 const slides=[...document.querySelectorAll('.hero img.bg')];let si=0;
-setInterval(()=>{slides[si].classList.remove('active');si=(si+1)%slides.length;slides[si].classList.add('active');},5000);
+setInterval(()=>{
+  slides[si].classList.remove('active');
+  // لإعادة تشغيل الحركة عند كل تبديل
+  slides[si].style.animation='none'; void slides[si].offsetWidth; slides[si].style.animation=null;
+  si=(si+1)%slides.length;
+  slides[si].classList.add('active');
+},5000);
+
+// ===== Hero title enter once =====
+const heroTitle=document.getElementById('heroTitle');
+window.addEventListener('load',()=>heroTitle.classList.add('entered'));
 
 // ===== Type lines (no blink) =====
 const lines=[
@@ -289,7 +315,7 @@ const tw=document.getElementById('typewriter');let wi=0;
 function nextLine(){tw.classList.remove('show');setTimeout(()=>{tw.textContent=lines[wi];tw.classList.add('show');wi=(wi+1)%lines.length;},220);}
 nextLine();setInterval(nextLine,4200);
 
-// ===== Reveal on scroll =====
+// ===== Reveal on scroll (titles + texts) =====
 const revealEls=[...document.querySelectorAll('.reveal,.t-card')];
 const io=new IntersectionObserver(es=>{
   es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
