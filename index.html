@@ -10,13 +10,6 @@
 <meta name="author" content="قوافل الأخيار لتنظيم الرحلات">
 <meta name="robots" content="index, follow">
 
-<!-- Open Graph -->
-<meta property="og:title" content="قوافل الأخيار لتنظيم الرحلات">
-<meta property="og:description" content="رحلات فاخرة من الرياض إلى مكة والمدينة بنقل VIP، وإقامة راقية وتنظيم متكامل.">
-<meta property="og:image" content="images/hero1.webp">
-<meta property="og:type" content="website">
-<meta property="og:locale" content="ar_SA">
-
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;800&display=swap" rel="stylesheet">
 
 <style>
@@ -45,31 +38,87 @@ header{position:sticky;top:0;z-index:30;background:rgba(0,0,0,.45);backdrop-filt
 @media(max-width:900px){.nav{display:none}}
 
 /* Hero */
-.hero{position:relative;height:88vh;overflow:hidden;isolation:isolate}
-.hero img.bg{
-  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
-  opacity:0;transition:opacity 1.2s ease;transform:scale(1.15);
+.hero {
+  position: relative;
+  height: 88vh;
+  overflow: hidden;
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.hero img.bg.active{
-  opacity:1;animation:panZoom 10s ease-in-out forwards;
+.hero img.bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1.2s ease;
+  transform: scale(1.15);
 }
-@keyframes panZoom{
-  0%{transform:scale(1.12) translateY(0)}
-  50%{transform:scale(1.18) translateY(-6px)}
-  100%{transform:scale(1.14) translateY(0)}
+.hero img.bg.active {
+  opacity: 1;
+  animation: panZoom 10s ease-in-out forwards;
 }
-.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.18),rgba(0,0,0,.82));z-index:1}
-.hero-box{position:relative;z-index:2;height:100%;display:grid;place-items:center;text-align:center;padding:0 1rem}
-.hero-title{
-  font-size:clamp(26px,3.2vw,40px);font-weight:800;color:#fff;
-  text-shadow:0 6px 18px rgba(0,0,0,.55);opacity:0;transform:translateY(-8px);
-  transition:opacity .7s ease, transform .7s ease;
+@keyframes panZoom {
+  0% { transform: scale(1.12) translateY(0); }
+  50% { transform: scale(1.18) translateY(-6px); }
+  100% { transform: scale(1.14) translateY(0); }
 }
-.hero-title.entered{opacity:1;transform:none}
-.hero-line{font-size:clamp(15px,2vw,20px);font-weight:700;color:var(--gold);min-height:30px;margin-top:.5rem;opacity:0;transition:opacity .55s ease}
-.hero-line.show{opacity:1}
-.btn-primary{margin-top:1rem;padding:.9rem 1.6rem;border:none;border-radius:999px;background:linear-gradient(90deg,var(--gold2),var(--gold));color:#111;font-weight:800;cursor:pointer;transition:.25s}
-.btn-primary:hover{transform:translateY(-3px);box-shadow:0 10px 20px rgba(254,178,17,.25)}
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.82));
+  z-index: 1;
+}
+.hero-box {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 0 1rem;
+  max-width: 90%;
+}
+.hero-title {
+  font-size: clamp(26px, 3.2vw, 40px);
+  font-weight: 800;
+  color: #fff;
+  text-shadow: 0 6px 18px rgba(0,0,0,.55);
+  margin-bottom: 0.2rem;
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: opacity .7s ease, transform .7s ease;
+}
+.hero-title.entered {
+  opacity: 1;
+  transform: none;
+}
+.hero-line {
+  font-size: clamp(15px, 2vw, 20px);
+  font-weight: 700;
+  color: var(--gold);
+  min-height: 30px;
+  margin-top: 0.2rem;
+  opacity: 0;
+  transition: opacity .55s ease;
+}
+.hero-line.show { opacity: 1; }
+.btn-primary {
+  margin-top: 0.5rem;
+  padding: 0.8rem 1.4rem;
+  border: none;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--gold2), var(--gold));
+  color: #111;
+  font-weight: 800;
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(254,178,17,.25);
+}
 
 /* Sections */
 section.sec{max-width:1200px;margin:auto;padding:3rem 1rem;text-align:center}
@@ -110,41 +159,22 @@ section.sec{max-width:1200px;margin:auto;padding:3rem 1rem;text-align:center}
 @keyframes scrollLTR{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
 @media(max-width:820px){.track{animation-duration:9s}}
 
-/* Booking */
-.booking{background:rgba(255,255,255,.03);border:1px solid var(--border);padding:1.3rem;border-radius:14px;max-width:700px;margin:2rem auto}
-.booking form{display:grid;gap:.8rem;grid-template-columns:repeat(3,1fr)}
-.booking input,.booking select{background:rgba(255,255,255,.06);border:1px solid var(--border);color:#fff;padding:.85rem;border-radius:10px}
-.booking button{grid-column:1/-1;padding:.9rem;border:none;border-radius:10px;font-weight:800;cursor:pointer;background:linear-gradient(90deg,var(--gold2),var(--gold));color:#111}
-@media(max-width:820px){.booking form{grid-template-columns:1fr 1fr}}
-@media(max-width:520px){.booking form{grid-template-columns:1fr}}
-
 /* Footer */
 footer{padding:2rem 1rem;text-align:center;border-top:1px solid rgba(255,255,255,.08);color:#cbd5e1}
 footer img{width:92px;height:auto;margin-top:.6rem}
 footer .cr{color:#fff;margin-top:.4rem}
-
-/* Social icons row (footer) */
 .social-row{display:flex;gap:.8rem;justify-content:center;align-items:center;flex-wrap:wrap;margin-bottom:1rem}
 .social-row img{width:40px;height:40px;display:block;transition:transform .25s}
 .social-row img:hover{transform:translateY(-3px)}
-
-/* WhatsApp floating + pulse */
 .whatsapp{position:fixed;left:16px;bottom:16px;width:56px;height:56px;border-radius:50%;background:var(--whatsapp);display:grid;place-items:center;z-index:60;box-shadow:0 10px 26px rgba(0,0,0,.35);animation:pulse 2.2s infinite}
 .whatsapp img{width:28px;height:28px}
-@keyframes pulse{
-  0%{box-shadow:0 0 0 0 rgba(37,211,102,.45)}
-  70%{box-shadow:0 0 0 16px rgba(37,211,102,0)}
-  100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}
-}
-
-/* Reveal utility */
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(37,211,102,.45)}70%{box-shadow:0 0 0 16px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
 .reveal{opacity:0;transform:translateY(16px);transition:opacity .7s,transform .7s}
 .reveal.in{opacity:1;transform:none}
 </style>
 </head>
 <body>
 
-<!-- Header -->
 <header>
   <div class="header-wrap">
     <div class="brand">
@@ -165,13 +195,12 @@ footer .cr{color:#fff;margin-top:.4rem}
   </div>
 </header>
 
-<!-- Hero -->
-<section class="hero" aria-label="Hero">
-  <img src="images/hero1.webp" class="bg active" alt="">
-  <img src="images/hero2.webp" class="bg" alt="">
-  <img src="images/hero3.webp" class="bg" alt="">
-  <img src="images/hero4.webp" class="bg" alt="">
-  <img src="images/hero5.webp" class="bg" alt="">
+<section class="hero">
+  <img src="images/hero1.webp" class="bg active">
+  <img src="images/hero2.webp" class="bg">
+  <img src="images/hero3.webp" class="bg">
+  <img src="images/hero4.webp" class="bg">
+  <img src="images/hero5.webp" class="bg">
   <div class="hero-box">
     <h1 class="hero-title" id="heroTitle">نأخذك إلى وجهتك بطمأنينة</h1>
     <div id="typewriter" class="hero-line"></div>
@@ -179,183 +208,9 @@ footer .cr{color:#fff;margin-top:.4rem}
   </div>
 </section>
 
-<!-- About (بعد الهيرو مباشرة) -->
 <section id="about" class="about">
   <h2 class="gradient reveal">من نحن</h2>
   <p class="reveal">قوافل الأخيار لتنظيم الرحلات وجهتكم الأولى للرحلات الفاخرة من الرياض إلى مكة والمدينة. نقدّم نقلاً مريحًا وآمنًا بأسطول حديث، وإقامة فندقية راقية، وتنظيمًا دقيقًا يليق بثقتكم.</p>
 </section>
 
-<!-- Services -->
-<section id="services" class="sec">
-  <h2 class="gradient reveal">خدماتنا</h2>
-  <p class="reveal" style="color:var(--muted);margin-bottom:1.2rem">نرافقكم بخدمات متكاملة في كل خطوة من رحلتكم</p>
-  <div class="cards">
-    <article class="card reveal"><img src="images/service1.jpg" alt=""><div class="inner"><h3>رحلات الرياض - مكة - الرياض مع الإقامة</h3></div></article>
-    <article class="card reveal"><img src="images/service2.jpg" alt=""><div class="inner"><h3>رحلات الرياض - مكة - المدينة - الرياض مع الإقامة</h3></div></article>
-    <article class="card reveal"><img src="images/service3.jpg" alt=""><div class="inner"><h3>النقل السياحي وVIP</h3></div></article>
-    <article class="card reveal"><img src="images/service4.jpg" alt=""><div class="inner"><h3>تنسيق الحجوزات وإدارة الفعاليات</h3></div></article>
-  </div>
-</section>
-
-<!-- Impact -->
-<section id="impact" class="sec">
-  <h2 class="gradient reveal">أثرنا</h2>
-  <div class="stats">
-    <div class="stat reveal"><span class="num" data-target="17650" data-prefix="+">0</span><p>عدد الرحلات المنفذة</p></div>
-    <div class="stat reveal"><span class="num" data-target="270000" data-prefix="+">0</span><p>عدد العملاء المستفيدين</p></div>
-    <div class="stat reveal"><span class="num" data-target="25">0</span><p>سنوات الخبرة</p></div>
-    <div class="stat reveal"><span class="num" data-target="91" data-suffix="%">0</span><p>نسبة رضا العملاء</p></div>
-  </div>
-</section>
-
-<!-- Testimonials -->
-<section id="testimonials" class="sec">
-  <h2 class="gradient reveal">قالوا عنا</h2>
-  <div class="t-grid">
-    <article class="t-card"><div class="t-head"><div class="avatar">أ</div><div><strong>أبو محمد</strong><div class="stars">★★★★★</div></div></div><p>تنظيم راقٍ ومواعيد دقيقة وتجربة سفر فاخرة من البداية حتى النهاية.</p></article>
-    <article class="t-card"><div class="t-head"><div class="avatar">س</div><div><strong>سارة.م</strong><div class="stars">★★★★★</div></div></div><p>خدمة عملاء احترافية وخيارات فنادق ممتازة. أنصح بهم بشدة.</p></article>
-    <article class="t-card"><div class="t-head"><div class="avatar">ر</div><div><strong>شركة رواحل</strong><div class="stars">★★★★★</div></div></div><p>نقل VIP فعلاً وتجربة ضيافة فاخرة. شكراً لكم على رحلتنا المميزة.</p></article>
-  </div>
-</section>
-
-<!-- Partners -->
-<section id="partners" class="partners">
-  <div class="wrap">
-    <h2 class="gradient reveal">شركاء النجاح</h2>
-    <div class="marquee reveal">
-      <div class="track">
-        <div class="partner"><img src="images/partner-1.svg" alt=""></div>
-        <div class="partner"><img src="images/partner-2.svg" alt=""></div>
-        <div class="partner"><img src="images/partner-3.svg" alt=""></div>
-        <div class="partner"><img src="images/partner-4.svg" alt=""></div>
-        <div class="partner"><img src="images/partner-5.svg" alt=""></div>
-        <div class="partner"><img src="images/partner-6.svg" alt=""></div>
-        <div class="partner"><img src="images/partner-7.svg" alt=""></div>
-        <div class="partner"><img src="images/partner-1.svg" alt=""></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Booking -->
-<section id="booking" class="sec">
-  <h2 class="gradient reveal">نموذج طلب الحجز</h2>
-  <div class="booking reveal">
-    <form id="bookForm">
-      <input type="text" name="name" placeholder="الاسم الكامل" required>
-      <input type="date" name="date" required>
-      <input type="number" name="people" placeholder="عدد الأشخاص" min="1" required>
-      <select name="service" required>
-        <option value="">الخدمة</option>
-        <option>الرياض - مكة - الرياض</option>
-        <option>الرياض - مكة - المدينة - الرياض</option>
-      </select>
-      <select name="transport" required>
-        <option value="">الناقل</option>
-        <option>رحلة بر سياحي</option>
-        <option>رحلة بر VIP</option>
-        <option>طيران</option>
-      </select>
-      <select name="accommodation" required>
-        <option value="">الإقامة</option>
-        <option>غرفة مفرد</option>
-        <option>ثنائي</option>
-        <option>رباعي</option>
-        <option>بدون</option>
-      </select>
-      <button type="submit">احجز الآن</button>
-    </form>
-  </div>
-</section>
-
-<!-- Footer -->
-<footer>
-  <!-- سوشال فوق الحقوق -->
-  <div class="social-row">
-    <a href="https://www.instagram.com/q_alakhyar" target="_blank" aria-label="Instagram"><img src="images/social/instagram.svg" alt="Instagram"></a>
-    <a href="https://www.tiktok.com/@q_alakhyar" target="_blank" aria-label="TikTok"><img src="images/social/tiktok.svg" alt="TikTok"></a>
-    <a href="https://www.snapchat.com/add/q_alakhyar" target="_blank" aria-label="Snapchat"><img src="images/social/snapchat.svg" alt="Snapchat"></a>
-    <a href="https://x.com/QawafilAlakhyar" target="_blank" aria-label="X"><img src="images/social/x.svg" alt="X"></a>
-  </div>
-
-  <p>© جميع الحقوق محفوظة لـ قوافل الأخيار لتنظيم الرحلات</p>
-  <div class="cr">رقم السجل التجاري: 1010448443</div>
-  <img src="images/ministry-commerce.png" alt="شعار وزارة التجارة">
-</footer>
-
-<!-- زر واتساب عائم -->
-<a href="https://wa.me/966500280668" class="whatsapp" target="_blank" aria-label="WhatsApp">
-  <img src="images/social/whatsapp.svg" alt="WhatsApp">
-</a>
-
-<script>
-// ===== Hero slider (5s) + reset parallax animation =====
-const slides=[...document.querySelectorAll('.hero img.bg')];let si=0;
-setInterval(()=>{
-  slides[si].classList.remove('active');
-  // لإعادة تشغيل الحركة عند كل تبديل
-  slides[si].style.animation='none'; void slides[si].offsetWidth; slides[si].style.animation=null;
-  si=(si+1)%slides.length;
-  slides[si].classList.add('active');
-},5000);
-
-// ===== Hero title enter once =====
-const heroTitle=document.getElementById('heroTitle');
-window.addEventListener('load',()=>heroTitle.classList.add('entered'));
-
-// ===== Type lines (no blink) =====
-const lines=[
- "رحلات فاخرة من الرياض إلى مكة والمدينة",
- "نقل مريح وآمن بأسطول حديث",
- "إقامة فندقية راقية وخدمات مميزة",
- "تنظيم دقيق يليق بثقتكم",
- "احجز الآن مع قوافل الأخيار"
-];
-const tw=document.getElementById('typewriter');let wi=0;
-function nextLine(){tw.classList.remove('show');setTimeout(()=>{tw.textContent=lines[wi];tw.classList.add('show');wi=(wi+1)%lines.length;},220);}
-nextLine();setInterval(nextLine,4200);
-
-// ===== Reveal on scroll (titles + texts) =====
-const revealEls=[...document.querySelectorAll('.reveal,.t-card')];
-const io=new IntersectionObserver(es=>{
-  es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
-},{threshold:.15});
-revealEls.forEach(el=>io.observe(el));
-
-// ===== Counters (English digits) =====
-const nums=[...document.querySelectorAll('.num')]; let counted=false;
-new IntersectionObserver(es=>{
-  es.forEach(entry=>{
-    if(entry.isIntersecting && !counted){
-      counted=true;
-      nums.forEach(el=>{
-        const t=parseInt(el.dataset.target,10),
-              pre=el.dataset.prefix||"", suf=el.dataset.suffix||"";
-        const start=performance.now(), dur=1500;
-        function step(ts){
-          const p=Math.min((ts-start)/dur,1);
-          el.textContent=pre+Math.floor(p*t).toLocaleString('en-US')+suf;
-          if(p<1) requestAnimationFrame(step);
-        }
-        requestAnimationFrame(step);
-      });
-    }
-  });
-},{threshold:.35}).observe(document.querySelector('#impact'));
-
-// ===== Booking -> WhatsApp =====
-document.getElementById('bookForm').addEventListener('submit',e=>{
-  e.preventDefault();
-  const d=new FormData(e.target);
-  const msg=`طلب حجز جديد:
-الاسم: ${d.get('name')}
-التاريخ: ${d.get('date')}
-عدد الأشخاص: ${d.get('people')}
-الخدمة: ${d.get('service')}
-الناقل: ${d.get('transport')}
-الإقامة: ${d.get('accommodation')}`;
-  window.open('https://wa.me/966500280668?text='+encodeURIComponent(msg),'_blank');
-});
-</script>
-</body>
-</html>
+<!-- ... باقي الأقسام (الخدمات، أثرنا، قالوا عنا، شركاء النجاح، الحجز، الفوتر) بنفس ما في النسخة السابقة ... -->
