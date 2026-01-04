@@ -133,6 +133,42 @@ header{
 }
 .btn-primary:hover{transform:translateY(-3px);box-shadow:0 12px 24px rgba(224,179,36,.22)}
 
+/* === أزرار الهيرو (إضافة زر المهرجان) === */
+.hero-actions{
+  display:flex;
+  gap:.7rem;
+  flex-wrap:wrap;
+  justify-content:center;
+  align-items:center;
+}
+.btn-fest{
+  margin-top:.2rem;
+  padding:.9rem 1.2rem;
+  border-radius:999px;
+  border:1px solid rgba(0,0,0,.08);
+  background:rgba(255,255,255,.88);
+  color:var(--primary);
+  font-weight:800;
+  cursor:pointer;
+  transition:.25s;
+  display:inline-flex;
+  align-items:center;
+  gap:.5rem;
+  box-shadow:0 10px 22px rgba(0,0,0,.08);
+}
+.btn-fest:hover{
+  transform:translateY(-3px);
+  box-shadow:0 14px 28px rgba(0,0,0,.12);
+}
+.fest-icon{
+  width:32px;height:32px;
+  display:grid;place-items:center;
+  border-radius:50%;
+  background:linear-gradient(90deg,var(--gold2),var(--gold));
+  color:#111;
+  font-size:18px;
+}
+
 /* لوقو شفاف دوّار (اختياري) */
 .logo-spin{
   position:absolute;right:3vw;bottom:8vh;width:min(24vw,220px);aspect-ratio:1/1;z-index:2;opacity:.92;
@@ -313,7 +349,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <h1 class="hero-title" id="heroTitle">نأخذك إلى وجهتك بطمأنينة</h1>
       <div id="typewriter" class="hero-line"></div>
     </div>
-    <button class="btn-primary" onclick="document.querySelector('#booking').scrollIntoView({behavior:'smooth'})">احجز الآن</button>
+
+    <!-- زرّين في الهيرو: الحجز العام + حجز المهرجان -->
+    <div class="hero-actions">
+      <button class="btn-primary" onclick="document.querySelector('#booking').scrollIntoView({behavior:'smooth'})">
+        احجز الآن
+      </button>
+
+      <button class="btn-fest" onclick="document.querySelector('#festival-booking').scrollIntoView({behavior:'smooth'})" aria-label="حجز مهرجان الحريق للحمضيات">
+        <span class="fest-icon" aria-hidden="true">🍊</span>
+        مهرجان الحريق للحمضيات
+      </button>
+    </div>
   </div>
 </section>
 
@@ -407,6 +454,38 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
+<!-- Festival Booking (نموذج خاص بالمهرجان) -->
+<section id="festival-booking" class="sec">
+  <h2 class="gradient reveal">حجز مهرجان الحريق للحمضيات</h2>
+
+  <div class="booking reveal">
+    <form id="festivalForm">
+      <input type="text" name="name" placeholder="الاسم الكامل" required>
+
+      <!-- التاريخ ثابت (عرض) + قيمة للإرسال -->
+      <input type="text" name="date_display" value="11 يناير 2026" disabled>
+      <input type="hidden" name="date" value="2026-01-11">
+
+      <!-- عدد الأشخاص متاح -->
+      <input type="text" name="people" placeholder="عدد الأشخاص" inputmode="numeric" pattern="[0-9٠-٩]+" required>
+
+      <!-- الخدمة ثابتة (عرض) + قيمة للإرسال -->
+      <input type="text" name="service_display" value="مهرجان الحريق للحمضيات 10" disabled>
+      <input type="hidden" name="service" value="مهرجان الحريق للحمضيات 10">
+
+      <!-- الناقل ثابت (عرض) + قيمة للإرسال -->
+      <input type="text" name="transport_display" value="باص سياحي" disabled>
+      <input type="hidden" name="transport" value="باص سياحي">
+
+      <!-- الإقامة ثابتة (عرض) + قيمة للإرسال -->
+      <input type="text" name="accommodation_display" value="بدون" disabled>
+      <input type="hidden" name="accommodation" value="بدون">
+
+      <button type="submit">احجز مهرجان الحريق الآن</button>
+    </form>
+  </div>
+</section>
+
 <!-- Footer -->
 <footer>
   <div class="social-row">
@@ -418,12 +497,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <!-- أرقام التواصل القابلة للنقر -->
   <div class="phones">
-    <a href="tel:0537367603" aria-label="0اتصال 0537367603">📞 537367603</a>
-    <a href="tel:00966114288884" aria-label="00اتصال 00966114288884">📞 966114288884</a>
+    <a href="tel:0537367603" aria-label="اتصال 0537367603">📞 0537367603</a>
+    <a href="tel:0114288884" aria-label="اتصال 0114288884">📞 0114288884</a>
     <a href="tel:0500280668" aria-label="اتصال 0500280668">📞 0500280668</a>
     <a href="tel:0506026619" aria-label="اتصال 0506026619">📞 0506026619</a>
-    <a href="tel:0547614011" aria-label="0اتصال 0547614011">📞 547614011</a>
-    <a href="tel:0557256526" aria-label="اتصال 0557256526">📞 0557256526 </a>
+    <a href="tel:0547614011" aria-label="اتصال 0547614011">📞 0547614011</a>
+    <a href="tel:0557256526" aria-label="اتصال 0557256526">📞 0557256526</a>
   </div>
 
   <p>© جميع الحقوق محفوظة لـ قوافل الأخيار لتنظيم الرحلات</p>
@@ -495,13 +574,27 @@ new IntersectionObserver(es=>{
   });
 },{threshold:.35}).observe(document.querySelector('#impact'));
 
-// إرسال نموذج الحجز إلى واتساب
+// إرسال نموذج الحجز (العام) إلى واتساب
 document.getElementById('bookForm').addEventListener('submit',e=>{
   e.preventDefault();
   const d=new FormData(e.target);
   const msg=`طلب حجز جديد:
 الاسم: ${d.get('name')}
 التاريخ: ${d.get('date')}
+عدد الأشخاص: ${d.get('people')}
+الخدمة: ${d.get('service')}
+الناقل: ${d.get('transport')}
+الإقامة: ${d.get('accommodation')}`;
+  window.open('https://wa.me/966547614011?text='+encodeURIComponent(msg),'_blank');
+});
+
+// إرسال نموذج المهرجان إلى واتساب
+document.getElementById('festivalForm').addEventListener('submit',e=>{
+  e.preventDefault();
+  const d=new FormData(e.target);
+  const msg=`طلب حجز مهرجان الحريق للحمضيات:
+الاسم: ${d.get('name')}
+التاريخ: 11 يناير 2026
 عدد الأشخاص: ${d.get('people')}
 الخدمة: ${d.get('service')}
 الناقل: ${d.get('transport')}
