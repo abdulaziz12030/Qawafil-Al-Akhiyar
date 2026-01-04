@@ -33,17 +33,19 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <style>
 :root{
-  --primary:#3b3a90;
-  --forest:#1f271c;
-  --gray:#a9abad;
-  --gold:#E0B324;
-  --gold2:#FFD46B;
+  /* لوحة الهوية (مقترحة من الصورة المرفقة) */
+  --primary:#3b3a90;      /* أزرق بنفسجي هادئ */
+  --forest:#1f271c;       /* أخضر داكن (للنصوص الثانوية لو لزم) */
+  --gray:#a9abad;         /* رمادي متوسط */
+  --gold:#E0B324;         /* ذهبي */
+  --gold2:#FFD46B;        /* ذهبي فاتح */
   --white:#ffffff;
 
-  --bg:#f6f7fb;
-  --card:#ffffff;
-  --text:#1d2125;
-  --muted:#5b6168;
+  /* واجهة فاتحة */
+  --bg:#f6f7fb;           /* خلفية الموقع */
+  --card:#ffffff;         /* خلفيات البطاقات */
+  --text:#1d2125;         /* لون النص الرئيسي */
+  --muted:#5b6168;        /* نص ثانوي */
   --border:rgba(0,0,0,.08);
   --shadow:0 10px 30px rgba(0,0,0,.08);
 
@@ -66,7 +68,7 @@ header{
   backdrop-filter:blur(10px);box-shadow:0 6px 18px rgba(0,0,0,.06)
 }
 .header-wrap{
-  max-width:1200px;margin:auto;padding:1.1rem 1rem;
+  max-width:1200px;margin:auto;padding:1.1rem 1rem; /* ↑ تم زيادة الارتفاع */
   display:flex;justify-content:space-between;align-items:center
 }
 .brand{display:flex;align-items:center;gap:.9rem}
@@ -99,15 +101,16 @@ header{
   50%{transform:scale(1.09) translateY(-6px)}
   100%{transform:scale(1.06) translateY(0)}
 }
+/* طبقة خفيفة جداً للحفاظ على الوضوح دون تغميق */
 .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.15),rgba(255,255,255,.20));z-index:1}
 
-/* Hero Box */
+/* صندوق نصوص الهيرو: خلفية بيضاء شفافة + بلور لزيادة الوضوح */
 .hero-box{
   position:relative;z-index:2;text-align:center;padding:1rem;max-width:900px;width:min(92%,900px);
-  display:flex;flex-direction:column;align-items:center;gap:.7rem
+  display:flex;flex-direction:column;align-items:center;gap:.6rem
 }
 .hero-blur{
-  background:rgba(255,255,255,.40);
+  background:rgba(255,255,255,.40); /* خلفية شفافة مخففة */
   border:1px solid rgba(0,0,0,.06);box-shadow:var(--shadow);
   backdrop-filter:blur(6px);border-radius:14px;padding:1rem 1.2rem
 }
@@ -118,129 +121,17 @@ header{
 }
 .hero-title.entered{opacity:1;transform:none}
 .hero-line{
-  font-size:clamp(15px,2.1vw,20px);font-weight:700;color:#7a6a1a;
+  font-size:clamp(15px,2.1vw,20px);font-weight:700;color:#7a6a1a; /* ذهبي داكن للنص */
   min-height:30px;opacity:0;transition:opacity .45s ease
 }
 .hero-line.show{opacity:1}
 
 /* زر احجز الآن */
 .btn-primary{
-  margin-top:.2rem;padding:.95rem 1.6rem;border:none;border-radius:999px;
-  background:linear-gradient(90deg,var(--gold2),var(--gold));
-  color:#111;font-weight:800;cursor:pointer;transition:.25s
+  margin-top:.2rem;padding:.9rem 1.5rem;border:none;border-radius:999px;
+  background:linear-gradient(90deg,var(--gold2),var(--gold));color:#111;font-weight:800;cursor:pointer;transition:.25s
 }
 .btn-primary:hover{transform:translateY(-3px);box-shadow:0 12px 24px rgba(224,179,36,.22)}
-
-/* === أزرار الهيرو === */
-.hero-actions{
-  display:flex;
-  gap:.8rem;
-  flex-wrap:wrap;
-  justify-content:center;
-  align-items:center;
-}
-
-/* === زر المهرجان (دعائي بارز) === */
-.btn-fest{
-  position:relative;
-  margin-top:.2rem;
-  padding:1.02rem 1.25rem;
-  border-radius:999px;
-  border:1px solid rgba(0,0,0,.08);
-  background:linear-gradient(90deg,#ffffff,rgba(255,255,255,.78));
-  color:var(--primary);
-  font-weight:900;
-  cursor:pointer;
-  transition:.25s;
-  display:inline-flex;
-  align-items:center;
-  gap:.65rem;
-  box-shadow:0 14px 30px rgba(0,0,0,.12);
-  overflow:hidden;
-}
-
-/* لمعة دعائية */
-.btn-fest::before{
-  content:"";
-  position:absolute;
-  top:-30%;
-  left:-55%;
-  width:55%;
-  height:170%;
-  transform:skewX(-18deg);
-  background:linear-gradient(90deg,transparent,rgba(255,212,107,.55),transparent);
-  animation:shine 3.8s ease-in-out infinite;
-  pointer-events:none;
-}
-@keyframes shine{
-  0%{left:-55%}
-  55%{left:120%}
-  100%{left:120%}
-}
-
-/* نبض خفيف للفت الانتباه */
-.btn-fest{
-  animation:festPulse 2.8s ease-in-out infinite;
-}
-@keyframes festPulse{
-  0%,100%{transform:translateY(0)}
-  50%{transform:translateY(-2px)}
-}
-.btn-fest:hover{
-  transform:translateY(-4px);
-  box-shadow:0 18px 38px rgba(0,0,0,.16);
-}
-
-/* أيقونة SVG داخل دائرة ذهبية */
-.fest-icon{
-  width:42px;height:42px;
-  border-radius:50%;
-  display:grid;place-items:center;
-  background:linear-gradient(90deg,var(--gold2),var(--gold));
-  box-shadow:0 10px 18px rgba(224,179,36,.24);
-  flex:0 0 auto;
-}
-.fest-icon svg{width:24px;height:24px;fill:#111}
-
-/* نص الزر + شارة */
-.fest-text{
-  display:flex;
-  flex-direction:column;
-  align-items:flex-start;
-  line-height:1.1;
-  gap:.2rem;
-  text-align:right;
-}
-.fest-text strong{
-  font-size:1.02rem;
-}
-.fest-text small{
-  font-weight:800;
-  color:#7a6a1a;
-  opacity:.95;
-}
-
-/* شارة "موعد ثابت" */
-.fest-badge{
-  display:inline-flex;
-  align-items:center;
-  gap:.35rem;
-  padding:.3rem .55rem;
-  border-radius:999px;
-  background:rgba(59,58,144,.10);
-  border:1px solid rgba(59,58,144,.14);
-  color:var(--primary);
-  font-weight:900;
-  font-size:.78rem;
-  margin-inline-start:.25rem;
-  white-space:nowrap;
-}
-
-/* تحسين للجوال: الزر يكون بعرض أفضل */
-@media(max-width:520px){
-  .btn-fest{width:100%;justify-content:center}
-  .fest-text{align-items:center;text-align:center}
-}
 
 /* لوقو شفاف دوّار (اختياري) */
 .logo-spin{
@@ -259,7 +150,9 @@ section.sec{max-width:1200px;margin:auto;padding:3rem 1rem;text-align:center}
 .about p{color:var(--muted);font-size:1.08rem}
 
 /* Services */
-.cards{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.cards{
+  display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))
+}
 .card{
   background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden;
   transition:transform .3s,box-shadow .3s,border-color .3s;box-shadow:var(--shadow)
@@ -270,7 +163,9 @@ section.sec{max-width:1200px;margin:auto;padding:3rem 1rem;text-align:center}
 .card .inner{padding:1rem}
 
 /* Impact */
-.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin-top:1rem}
+.stats{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin-top:1rem
+}
 .stat{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1rem;box-shadow:var(--shadow)}
 .stat .num{
   background:linear-gradient(90deg,var(--primary),var(--gold2));
@@ -279,14 +174,19 @@ section.sec{max-width:1200px;margin:auto;padding:3rem 1rem;text-align:center}
 }
 
 /* Testimonials */
-.t-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem;margin-top:1rem}
+.t-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem;margin-top:1rem
+}
 .t-card{
   background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1rem;text-align:right;
   opacity:0;transform:translateY(14px);transition:.6s;box-shadow:var(--shadow)
 }
 .t-card.in{opacity:1;transform:none}
 .t-head{display:flex;align-items:center;gap:.8rem;margin-bottom:.4rem}
-.avatar{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:rgba(59,58,144,.12);color:var(--primary);font-weight:800}
+.avatar{
+  width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:rgba(59,58,144,.12);
+  color:var(--primary);font-weight:800
+}
 .stars{color:var(--gold);font-size:14px}
 
 /* Partners */
@@ -322,7 +222,7 @@ section.sec{max-width:1200px;margin:auto;padding:3rem 1rem;text-align:center}
 /* تكبير أحجام الجوال */
 @media(max-width:600px){
   .booking input,.booking select,.booking button{font-size:1rem;padding:1rem}
-  .hero-box{gap:.6rem}
+  .hero-box{gap:.5rem}
 }
 
 /* Footer */
@@ -368,6 +268,39 @@ footer img.mc{width:92px;height:auto;margin-top:.6rem}
 /* كشف عند التمرير */
 .reveal{opacity:0;transform:translateY(16px);transition:opacity .7s,transform .7s}
 .reveal.in{opacity:1;transform:none}
+
+/* Hero CTAs (حجز + مهرجان الحريق) */
+.cta-row{
+  display:flex;gap:.7rem;justify-content:center;flex-wrap:wrap;margin-top:.35rem
+}
+.cta-secondary{
+  display:inline-flex;align-items:center;gap:.55rem;
+  padding:.9rem 1.15rem;border-radius:999px;border:1px solid rgba(0,0,0,.10);
+  background:rgba(255,255,255,.78);backdrop-filter:blur(8px);
+  color:var(--primary);text-decoration:none;font-weight:900;
+  box-shadow:0 12px 26px rgba(0,0,0,.08);
+  transition:.25s;position:relative;overflow:hidden
+}
+.cta-secondary::before{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(90deg,rgba(255,212,107,.55),rgba(224,179,36,.25));
+  opacity:.0;transition:.25s
+}
+.cta-secondary:hover{transform:translateY(-3px)}
+.cta-secondary:hover::before{opacity:.55}
+.cta-secondary span{position:relative;z-index:1}
+.cta-secondary svg{width:22px;height:22px;flex:0 0 22px;position:relative;z-index:1;fill:currentColor}
+.badge-hot{
+  position:relative;z-index:1;
+  margin-inline-start:.25rem;
+  font-size:.78rem;font-weight:900;color:#111;
+  background:linear-gradient(90deg,var(--gold2),var(--gold));
+  padding:.18rem .55rem;border-radius:999px;border:1px solid rgba(0,0,0,.08)
+}
+@media(max-width:520px){
+  .cta-secondary,.btn-primary{width:100%;max-width:360px}
+}
+
 </style>
 </head>
 <body>
@@ -405,6 +338,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <img src="images/hero4.webp" class="bg" alt="">
   <img src="images/hero5.webp" class="bg" alt="">
 
+  <!-- لوقو شفاف دوّار (اختياري) ضع الصورة التالية إن رغبت -->
   <img src="images/logo-light.png" alt="" class="logo-spin" onerror="this.style.display='none'">
 
   <div class="hero-box">
@@ -412,31 +346,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <h1 class="hero-title" id="heroTitle">نأخذك إلى وجهتك بطمأنينة</h1>
       <div id="typewriter" class="hero-line"></div>
     </div>
+    
+<div class="cta-row">
+  <button class="btn-primary" onclick="document.querySelector('#booking').scrollIntoView({behavior:'smooth'})">احجز الآن</button>
 
-    <div class="hero-actions">
-      <button class="btn-primary" onclick="document.querySelector('#booking').scrollIntoView({behavior:'smooth'})">
-        احجز الآن
-      </button>
+  <!-- أيقونة/زر دعائي لصفحة مهرجان الحريق -->
+  <a class="cta-secondary" href="harriq-festival.html" aria-label="حجز مهرجان الحريق للحمضيات 10">
+    <!-- Citrus icon (SVG) -->
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M12 2a10 10 0 1 0 10 10A10.01 10.01 0 0 0 12 2Zm0 2a7.98 7.98 0 0 1 7.93 7H12V4Zm0 16a8 8 0 0 1-7.93-7H12v7Zm0-9H4.07A7.98 7.98 0 0 1 12 4v7Zm0 2v7a7.98 7.98 0 0 0 7.93-7H12Z"/>
+    </svg>
+    <span>مهرجان الحريق للحمضيات <span class="badge-hot">10</span></span>
+  </a>
+</div>
 
-      <!-- زر المهرجان (دعائي بارز) -->
-      <button class="btn-fest" onclick="document.querySelector('#festival-booking').scrollIntoView({behavior:'smooth'})" aria-label="حجز مهرجان الحريق للحمضيات">
-        <span class="fest-icon" aria-hidden="true">
-          <!-- أيقونة دعائية (حافلة + نجمة) -->
-          <svg viewBox="0 0 24 24" role="img" aria-hidden="true">
-            <path d="M4 16V6.5C4 5.12 5.12 4 6.5 4h11C18.88 4 20 5.12 20 6.5V16c0 1.1-.9 2-2 2h-.5a2.5 2.5 0 0 1-5 0h-3a2.5 2.5 0 0 1-5 0H6c-1.1 0-2-.9-2-2Zm2.5-9.5A.5.5 0 0 0 6 7v2.5c0 .28.22.5.5.5H10V6H6.5ZM11 6v4h3V6h-3Zm4 0v4h2.5c.28 0 .5-.22.5-.5V7a.5.5 0 0 0-.5-.5H15Zm-9 6.5c-.28 0-.5.22-.5.5v1c0 .28.22.5.5.5h12c.28 0 .5-.22.5-.5v-1c0-.28-.22-.5-.5-.5H6Z"/>
-            <path d="M18.5 3.2l.35.72.8.12-.58.57.14.8-.71-.37-.71.37.14-.8-.58-.57.8-.12.35-.72Z"/>
-          </svg>
-        </span>
-
-        <span class="fest-text">
-          <strong>مهرجان الحريق للحمضيات</strong>
-          <span style="display:flex;gap:.45rem;align-items:center;justify-content:flex-start;flex-wrap:wrap">
-            <small>حجز خاص + تذاكر محدودة</small>
-            <span class="fest-badge">📅 11 يناير 2026</span>
-          </span>
-        </span>
-      </button>
-    </div>
   </div>
 </section>
 
@@ -530,33 +453,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
-<!-- Festival Booking (نموذج خاص بالمهرجان) -->
-<section id="festival-booking" class="sec">
-  <h2 class="gradient reveal">حجز مهرجان الحريق للحمضيات</h2>
-
-  <div class="booking reveal">
-    <form id="festivalForm">
-      <input type="text" name="name" placeholder="الاسم الكامل" required>
-
-      <input type="text" name="date_display" value="11 يناير 2026" disabled>
-      <input type="hidden" name="date" value="2026-01-11">
-
-      <input type="text" name="people" placeholder="عدد الأشخاص" inputmode="numeric" pattern="[0-9٠-٩]+" required>
-
-      <input type="text" name="service_display" value="مهرجان الحريق للحمضيات 10" disabled>
-      <input type="hidden" name="service" value="مهرجان الحريق للحمضيات 10">
-
-      <input type="text" name="transport_display" value="باص سياحي" disabled>
-      <input type="hidden" name="transport" value="باص سياحي">
-
-      <input type="text" name="accommodation_display" value="بدون" disabled>
-      <input type="hidden" name="accommodation" value="بدون">
-
-      <button type="submit">احجز مهرجان الحريق الآن</button>
-    </form>
-  </div>
-</section>
-
 <!-- Footer -->
 <footer>
   <div class="social-row">
@@ -566,13 +462,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <a href="https://x.com/QawafilAlakhyar" target="_blank" aria-label="X"><img src="images/social/x.svg" alt="X"></a>
   </div>
 
+  <!-- أرقام التواصل القابلة للنقر -->
   <div class="phones">
-    <a href="tel:0537367603" aria-label="اتصال 0537367603">📞 0537367603</a>
-    <a href="tel:0114288884" aria-label="اتصال 0114288884">📞 0114288884</a>
+    <a href="tel:0537367603" aria-label="0اتصال 0537367603">📞 537367603</a>
+    <a href="tel:00966114288884" aria-label="00اتصال 00966114288884">📞 966114288884</a>
     <a href="tel:0500280668" aria-label="اتصال 0500280668">📞 0500280668</a>
     <a href="tel:0506026619" aria-label="اتصال 0506026619">📞 0506026619</a>
-    <a href="tel:0547614011" aria-label="اتصال 0547614011">📞 0547614011</a>
-    <a href="tel:0557256526" aria-label="اتصال 0557256526">📞 0557256526</a>
+    <a href="tel:0547614011" aria-label="0اتصال 0547614011">📞 547614011</a>
+    <a href="tel:0557256526" aria-label="اتصال 0557256526">📞 0557256526 </a>
   </div>
 
   <p>© جميع الحقوق محفوظة لـ قوافل الأخيار لتنظيم الرحلات</p>
@@ -580,20 +477,25 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <img class="mc" src="images/ministry-commerce.png" alt="شعار وزارة التجارة">
 </footer>
 
+<!-- WhatsApp Floating -->
 <a href="https://wa.me/966547614011" class="whatsapp" target="_blank" aria-label="WhatsApp">
   <img src="images/social/whatsapp.svg" alt="WhatsApp">
 </a>
 
+<!-- زر الصعود لأعلى -->
 <button class="to-top" id="toTop" aria-label="العودة لأعلى">
   <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5l7 7-1.4 1.4L13 9.8V20h-2V9.8l-4.6 3.6L5 12z"/></svg>
 </button>
 
 <script>
+// تبديل خلفيات الهيرو (5 ثوانٍ) مع إعادة تحريك كل مرة
 const slides=[...document.querySelectorAll('.hero img.bg')];let si=0;
 setInterval(()=>{slides[si].classList.remove('active');slides[si].style.animation='none';void slides[si].offsetWidth;slides[si].style.animation=null;si=(si+1)%slides.length;slides[si].classList.add('active');},5000);
 
+// دخول عنوان الهيرو مرة واحدة
 window.addEventListener('load',()=>document.getElementById('heroTitle').classList.add('entered'));
 
+// كتابة أسطر الهيرو (بدون مؤشر وميض)
 const lines=[
   "رحلات فاخرة من الرياض إلى مكة والمدينة",
   "نقل مريح وآمن بأسطول حديث",
@@ -612,12 +514,14 @@ function showNextLine(){
 showNextLine();
 setInterval(showNextLine,intervalTime);
 
+// كشف العناصر عند التمرير (الأقسام + الشهادات)
 const revealEls=[...document.querySelectorAll('.reveal,.t-card')];
 const io=new IntersectionObserver(es=>{
   es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})
 },{threshold:.15});
 revealEls.forEach(el=>io.observe(el));
 
+// عدادات الأرقام
 const nums=[...document.querySelectorAll('.num')];let counted=false;
 new IntersectionObserver(es=>{
   es.forEach(entry=>{
@@ -637,6 +541,7 @@ new IntersectionObserver(es=>{
   });
 },{threshold:.35}).observe(document.querySelector('#impact'));
 
+// إرسال نموذج الحجز إلى واتساب
 document.getElementById('bookForm').addEventListener('submit',e=>{
   e.preventDefault();
   const d=new FormData(e.target);
@@ -650,19 +555,7 @@ document.getElementById('bookForm').addEventListener('submit',e=>{
   window.open('https://wa.me/966547614011?text='+encodeURIComponent(msg),'_blank');
 });
 
-document.getElementById('festivalForm').addEventListener('submit',e=>{
-  e.preventDefault();
-  const d=new FormData(e.target);
-  const msg=`طلب حجز مهرجان الحريق للحمضيات:
-الاسم: ${d.get('name')}
-التاريخ: 11 يناير 2026
-عدد الأشخاص: ${d.get('people')}
-الخدمة: ${d.get('service')}
-الناقل: ${d.get('transport')}
-الإقامة: ${d.get('accommodation')}`;
-  window.open('https://wa.me/966547614011?text='+encodeURIComponent(msg),'_blank');
-});
-
+// زر الرجوع لأعلى الصفحة
 const toTop=document.getElementById('toTop');
 window.addEventListener('scroll',()=>{
   if(window.scrollY>300){toTop.classList.add('show')}else{toTop.classList.remove('show')}
