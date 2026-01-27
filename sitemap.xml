@@ -44,13 +44,4 @@
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
-
-  <!-- صفحة هبوط مهرجان الحريق -->
-  <url>
-    <loc>https://www.alakhyar.sa/harriq-festival.html</loc>
-    <lastmod>2026-01-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
 </urlset>
